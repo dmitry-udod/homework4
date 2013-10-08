@@ -1,0 +1,38 @@
+<?php
+
+namespace Skrepka\CompanyBundle\Document;
+
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+
+/**
+ * Company
+ *
+ * @MongoDB\Document
+ */
+class Company
+{
+    /**
+     * @MongoDB\Id
+     */
+    protected  $id;
+
+    /**
+     * @MongoDB\String
+     */
+    protected $name;
+
+    /**
+     * @MongoDB\String
+     */
+    protected $description;
+
+    /**
+     * @MongoDB\String
+     */
+    protected $lat;
+
+    /**
+     * @MongoDB\String
+     */
+    protected $long;
+}

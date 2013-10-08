@@ -1,0 +1,43 @@
+<h1>Company list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Lat</th>
+            <th>Long</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for document in documents %}
+        <tr>
+            <td><a href="{{ path('company_show', { 'id': document.id }) }}">{{ document.id }}</a></td>
+            <td>{{ document.name }}</td>
+            <td>{{ document.description }}</td>
+            <td>{{ document.lat }}</td>
+            <td>{{ document.long }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('company_show', { 'id': document.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('company_edit', { 'id': document.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('company_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

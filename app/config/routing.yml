@@ -1,0 +1,5 @@
+company:
+    resource: "@CompanyBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

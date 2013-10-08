@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "dc50ee654966c11b7fcbf5d52405ba2e",
+    "hash": "40fd3ee0a1583c57095199c9cd2b636a",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -859,6 +859,48 @@
             "time": "2013-04-06 17:15:44"
         },
         {
+            "name": "ismaambrosi/generator-bundle",
+            "version": "dev-master",
+            "target-dir": "IsmaAmbrosi/Bundle/GeneratorBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/iambrosi/IsmaAmbrosiGeneratorBundle.git",
+                "reference": "53974b66c352b5b1cafdf55fc573a746d280802e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/iambrosi/IsmaAmbrosiGeneratorBundle/zipball/53974b66c352b5b1cafdf55fc573a746d280802e",
+                "reference": "53974b66c352b5b1cafdf55fc573a746d280802e",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/mongodb-odm": "1.0.*@beta",
+                "php": ">=5.3.3",
+                "sensio/generator-bundle": "~2.3"
+            },
+            "require-dev": {
+                "twig/twig": ">=1.4,<2.0-dev"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "IsmaAmbrosi\\Bundle\\GeneratorBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ismael Ambrosi",
+                    "email": "ismaambrosi@gmail.com"
+                }
+            ],
+            "description": "Generates Symfony2 documents, forms and CRUD",
+            "time": "2013-08-11 02:50:24"
+        },
+        {
             "name": "jdorn/sql-formatter",
             "version": "v1.2.9",
             "source": {
@@ -1650,16 +1692,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.13.2",
+            "version": "v1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "6d6a1009427d1f398c9d40904147bf9f723d5755"
+                "reference": "224fc55635d544a2ec8edb3592be18db5a093f59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/6d6a1009427d1f398c9d40904147bf9f723d5755",
-                "reference": "6d6a1009427d1f398c9d40904147bf9f723d5755",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/224fc55635d544a2ec8edb3592be18db5a093f59",
+                "reference": "224fc55635d544a2ec8edb3592be18db5a093f59",
                 "shasum": ""
             },
             "require": {
@@ -1668,7 +1710,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.13-dev"
+                    "dev-master": "1.14-dev"
                 }
             },
             "autoload": {
@@ -1695,7 +1737,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2013-08-03 15:35:31"
+            "time": "2013-10-03 06:41:20"
         }
     ],
     "packages-dev": [
@@ -1707,7 +1749,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "doctrine/mongodb-odm": 20,
-        "doctrine/mongodb-odm-bundle": 20
+        "doctrine/mongodb-odm-bundle": 20,
+        "ismaambrosi/generator-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"

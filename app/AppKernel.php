@@ -19,6 +19,7 @@ class AppKernel extends Kernel
 
             new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
             new Skrepka\CompanyBundle\CompanyBundle(),
+            new Skrepka\GestBookBundle\GuestBookBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

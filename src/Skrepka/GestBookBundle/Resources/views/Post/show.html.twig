@@ -20,7 +20,7 @@
         </tr>
         <tr>
             <th>Created_at</th>
-            <td>{{ document.createdat }}</td>
+            <td>{{ document.createdat|date('Y-m-d H:i:s') }}</td>
         </tr>
     </tbody>
 </table>

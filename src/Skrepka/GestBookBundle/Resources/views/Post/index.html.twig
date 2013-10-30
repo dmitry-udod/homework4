@@ -18,7 +18,7 @@
             <td>{{ document.name }}</td>
             <td>{{ document.email }}</td>
             <td>{{ document.description }}</td>
-            <td>{{ document.createdat }}</td>
+            <td>{{ document.createdat|date('Y-m-d H:i:s') }}</td>
             <td>
                 <ul>
                     <li>

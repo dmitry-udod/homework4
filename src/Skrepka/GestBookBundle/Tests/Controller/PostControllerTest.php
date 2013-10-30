@@ -6,50 +6,62 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class PostControllerTest extends WebTestCase
 {
-    /*
-    public function testCompleteScenario()
+
+    public function testIndexAction()
     {
         // Create a new client to browse the application
         $client = static::createClient();
-
-        // Create a new entry in the database
         $crawler = $client->request('GET', '/post/');
-        $this->assertTrue(200 === $client->getResponse()->getStatusCode());
+        $this->assertTrue($client->getResponse()->getStatusCode() === 200);
+    }
+
+    public function testNewAction()
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/post/');
         $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'skrepka_gestbookbundle_posttype[field_name]'  => 'Test',
-            // ... other fields to fill
+            'posttype[name]'  => 'Test Name',
+            'posttype[email]'  => 'test@email.com',
+            'posttype[description]'  => 'Test Description',
         ));
 
         $client->submit($form);
         $crawler = $client->followRedirect();
 
         // Check data in the show view
-        $this->assertTrue($crawler->filter('td:contains("Test")')->count() > 0);
+        $this->assertTrue($crawler->filter('td:contains("Test Name")')->count() > 0);
+    }
 
-        // Edit the document
-        $crawler = $client->click($crawler->selectLink('Edit')->link());
+    public function testEditAction()
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/post/');
+        $crawler = $client->click($crawler->selectLink('edit')->link());
 
         $form = $crawler->selectButton('Edit')->form(array(
-            'skrepka_gestbookbundle_posttype[field_name]'  => 'Foo',
-            // ... other fields to fill
+            'posttype[name]'  => 'Foo Test Edit',
         ));
 
         $client->submit($form);
         $crawler = $client->followRedirect();
 
-        // Check the element contains an attribute with value equals "Foo"
-        $this->assertTrue($crawler->filter('[value="Foo"]')->count() > 0);
+        $this->assertTrue($crawler->filter('[value="Foo Test Edit"]')->count() > 0);
+    }
 
-        // Delete the document
+    public function testDeleteAction()
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/post/');
+        $crawler = $client->click($crawler->selectLink('edit')->link());
+
         $client->submit($crawler->selectButton('Delete')->form());
         $crawler = $client->followRedirect();
 
         // Check the document has been delete on the list
-        $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
-    }
+        $this->assertNotRegExp('/Foo Test Edit/', $client->getResponse()->getContent());
 
-    */
+    }
 }

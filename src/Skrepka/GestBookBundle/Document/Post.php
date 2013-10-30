@@ -10,8 +10,9 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
  * @ODM\Document(
  *     repositoryClass="Skrepka\GestBookBundle\Document\PostRepository"
  * )
- * @ODM\ChangeTrackingPolicy("DEFERRED_IMPLICIT")
+ *
  */
+//@ODM\ChangeTrackingPolicy("DEFERRED_IMPLICIT")
 class Post
 {
     /**

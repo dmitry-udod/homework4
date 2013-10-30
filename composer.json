@@ -21,7 +21,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "doctrine/mongodb-odm": "1.0.*@dev",
         "doctrine/mongodb-odm-bundle": "3.0.*@dev",
-        "ismaambrosi/generator-bundle": "dev-master"
+        "ismaambrosi/generator-bundle": "dev-master",
+        "behat/symfony2-extension": "*"
     },
     "scripts": {
         "post-install-cmd": [

@@ -2,7 +2,7 @@
     "name": "symfony/framework-standard-edition",
     "license": "MIT",
     "type": "project",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "description": "Video Catalog",
     "autoload": {
         "psr-0": { "": "src/" }
     },
@@ -22,7 +22,8 @@
         "doctrine/mongodb-odm": "1.0.*@dev",
         "doctrine/mongodb-odm-bundle": "3.0.*@dev",
         "ismaambrosi/generator-bundle": "dev-master",
-        "behat/symfony2-extension": "*"
+        "behat/symfony2-extension": "*",
+        "friendsofsymfony/user-bundle": "~2.0@dev"
     },
     "scripts": {
         "post-install-cmd": [

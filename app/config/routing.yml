@@ -1,3 +1,11 @@
+film:
+    resource: "@FilmBundle/Resources/config/routing.yml"
+    prefix:   /
+
+actor:
+    resource: "@ActorBundle/Resources/config/routing.yml"
+    prefix:   /
+
 guest_book:
     resource: "@GuestBookBundle/Controller/"
     type:     annotation
@@ -26,3 +34,12 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin

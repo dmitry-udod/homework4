@@ -1,0 +1,42 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<h1>Films</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Year</th>
+            <th>Description</th>
+            <th>Actors</th>
+            <th>Categories</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for film in films %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ film.title }}</td>
+            <td>{{ film.year }}</td>
+            <td>{{ film.description }}</td>
+            <td>
+                {% for actor in film.actors %}
+                    <ul>
+                        <li>{{ actor.firstName }} {{ actor.lastName }}</li>
+                    </ul>
+                {% endfor %}
+            </td>
+            <td>
+                {% for category in film.categories %}
+                    <ul>
+                        <li>{{ category.name }} {{ category.name }}</li>
+                    </ul>
+                {% endfor %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

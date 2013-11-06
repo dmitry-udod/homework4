@@ -1,3 +1,7 @@
+category:
+    resource: "@CategoryBundle/Resources/config/routing.yml"
+    prefix:   /
+
 film:
     resource: "@FilmBundle/Resources/config/routing.yml"
     prefix:   /

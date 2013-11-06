@@ -17,19 +17,4 @@
         </service>
     </services>
     -->
-
-    <services>
-        <service id="skrepka.film.repository"
-                 class="Skrepka\FilmBundle\Document\FilmRepository"
-                 factory-service="doctrine.odm.mongodb.document_manager"
-                 factory-method="getRepository">
-            <argument>FilmBundle:Film</argument>
-        </service>
-
-        <!--<service id="example.foo.service"-->
-                 <!--class="%example.foo.service.class%">-->
-            <!--<argument type="service" id="example.foo.repository" />-->
-            <!--<argument type="service" id="logger" />-->
-        <!--</service>-->
-    </services>
 </container>

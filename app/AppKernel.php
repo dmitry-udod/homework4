@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Skrepka\ActorBundle\ActorBundle(),
             new Skrepka\FilmBundle\FilmBundle(),
+            new Skrepka\CategoryBundle\CategoryBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

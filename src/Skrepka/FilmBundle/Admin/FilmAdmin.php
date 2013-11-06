@@ -17,6 +17,7 @@ class FilmAdmin extends Admin
             ->add('year', 'text', array('label' => 'Year'))
             ->add('description', 'text', array('label' => 'Description'))
             ->add('actors', 'document', array('class' => 'Skrepka\ActorBundle\Document\Actor', 'multiple' => true))
+            ->add('categories', 'document', array('class' => 'Skrepka\CategoryBundle\Document\Category', 'multiple' => true))
         ;
     }
 
@@ -28,6 +29,7 @@ class FilmAdmin extends Admin
             ->add('year')
             ->add('description')
             ->add('actors')
+            ->add('categories')
         ;
     }
 
@@ -39,6 +41,7 @@ class FilmAdmin extends Admin
             ->add('year')
             ->add('description')
             ->add('actors')
+            ->add('categories')
         ;
     }
 }

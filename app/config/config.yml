@@ -4,6 +4,7 @@ imports:
     - { resource: @GuestBookBundle/Resources/config/admin.xml }
     - { resource: @ActorBundle/Resources/config/admin.xml }
     - { resource: @FilmBundle/Resources/config/admin.xml }
+    - { resource: @CategoryBundle/Resources/config/admin.xml }
 
 framework:
     #esi:             ~

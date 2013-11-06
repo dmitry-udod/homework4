@@ -5,11 +5,13 @@ namespace Skrepka\FilmBundle\Document;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Skrepka\ActorBundle\Document\Actor;
+use Skrepka\CategoryBundle\Document\Category;
 
 /**
  * Skrepka\FilmBundle\Document\Film
  *
  * @ODM\Document
+ * @ODM\Document(repositoryClass="Skrepka\FilmBundle\Document\FilmRepository")
  * @ODM\ChangeTrackingPolicy("DEFERRED_IMPLICIT")
  */
 class Film
@@ -52,7 +54,7 @@ class Film
     /**
      * @var string $categories
      *
-     * @ODM\Field(name="categories", type="string")
+     * @ODM\ReferenceMany(targetDocument="Skrepka\CategoryBundle\Document\Category")
      */
     protected $categories;
 
@@ -66,6 +68,7 @@ class Film
     function __construct()
     {
         $this->actors = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     /**
@@ -152,7 +155,7 @@ class Film
      */
     public function setActors($actors)
     {
-        $this->actors = ($actors);
+        $this->actors = $actors;
         return $this;
     }
 

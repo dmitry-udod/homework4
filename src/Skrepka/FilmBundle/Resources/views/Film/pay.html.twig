@@ -1,0 +1,11 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<h3>Pay Me for Adult</h3>
+
+<form method="post" action="{{ url('film_pay', {'id': film.id}) }}" autocomplete="off" novalidate="novalidate">
+    {{ form_widget(form) }}
+    <input type="submit">
+</form>
+
+{% endblock %}

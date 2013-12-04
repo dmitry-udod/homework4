@@ -12,6 +12,7 @@
             <th>Description</th>
             <th>Actors</th>
             <th>Categories</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -31,9 +32,13 @@
             <td>
                 {% for category in film.categories %}
                     <ul>
-                        <li>{{ category.name }} {{ category.name }}</li>
+                        <li>{{ category.name }}</li>
                     </ul>
                 {% endfor %}
+            </td>
+            <td>
+                <a href="{{ url('film_view', {'id': film.id}) }}">Details</a>
+                <a href="{{ url('film_pay', {'id': film.id}) }}">Pay and view</a>
             </td>
         </tr>
     {% endfor %}

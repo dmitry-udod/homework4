@@ -4,20 +4,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
-    <parameters>
-        <parameter key="guest_book.example.class">Skrepka\GestBookBundle\Example</parameter>
-    </parameters>
-
-    <services>
-        <service id="guest_book.example" class="%guest_book.example.class%">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
-        </service>
-    </services>
-    -->
-
     <services>
         <service id="skrepka.film.repository"
                  class="Skrepka\FilmBundle\Document\FilmRepository"
@@ -26,10 +12,15 @@
             <argument>FilmBundle:Film</argument>
         </service>
 
-        <!--<service id="example.foo.service"-->
-                 <!--class="%example.foo.service.class%">-->
-            <!--<argument type="service" id="example.foo.repository" />-->
-            <!--<argument type="service" id="logger" />-->
-        <!--</service>-->
+        <service id="doctrine_mongo_db_param_converter"                 class="Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DoctrineParamConverter">
+            <argument type="service" id="doctrine_mongodb" />
+            <tag name="request.param_converter" converter="doctrine.odm" />
+        </service>
+
+        <service id="skrepka_user_bundle.credit_card_type"
+            class="Skrepka\UserBundle\Form\UserCreditCardType"
+        >
+            <tag name="form.type" alias="credit_card"></tag>
+        </service>
     </services>
 </container>

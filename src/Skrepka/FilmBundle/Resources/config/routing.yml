@@ -1,3 +1,13 @@
 films:
     pattern:  /
     defaults: { _controller: FilmBundle:Film:index }
+
+film_view:
+    pattern:  /films/{id}
+    defaults: { _controller: FilmBundle:Film:view }
+    prefix: /films
+
+film_pay:
+    pattern:  /films/{id}/pay
+    defaults: { _controller: FilmBundle:Film:pay }
+    prefix: /films

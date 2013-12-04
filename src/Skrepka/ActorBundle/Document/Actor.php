@@ -8,7 +8,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
  * Skrepka\ActorBundle\Document\Actor
  *
  * @ODM\Document
- * @ODM\ChangeTrackingPolicy("DEFERRED_IMPLICIT")
+ * @ODM\Document(repositoryClass="Skrepka\ActorBundle\Document\ActorRepository")
  */
 class Actor
 {
@@ -104,10 +104,10 @@ class Actor
     /**
      * Set birthday
      *
-     * @param date $birthday
+     * @param \MongoDate $birthday
      * @return self
      */
-    public function setBirthday($birthday)
+    public function setBirthday(\MongoDate $birthday)
     {
         $this->birthday = $birthday;
 

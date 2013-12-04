@@ -8,7 +8,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
  * Skrepka\CategoryBundle\Document\Category
  *
  * @ODM\Document
- * @ODM\ChangeTrackingPolicy("DEFERRED_IMPLICIT")
+ * @ODM\Document(repositoryClass="Skrepka\CategoryBundle\Document\CategoryRepository")
  */
 class Category
 {

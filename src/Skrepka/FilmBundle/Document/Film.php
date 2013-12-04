@@ -45,14 +45,14 @@ class Film
     protected $description;
 
     /**
-     * @var string $actors
+     * @var $actors
      *
      * @ODM\ReferenceMany(targetDocument="Skrepka\ActorBundle\Document\Actor")
      */
     protected $actors;
 
     /**
-     * @var string $categories
+     * @var $categories
      *
      * @ODM\ReferenceMany(targetDocument="Skrepka\CategoryBundle\Document\Category")
      */
@@ -84,7 +84,7 @@ class Film
     /**
      * Set title
      *
-     * @param string $title
+     * @param $title
      * @return self
      */
     public function setTitle($title)
@@ -150,12 +150,25 @@ class Film
     /**
      * Set actors
      *
-     * @param string $actors
+     * @param ArrayCollection $actors
      * @return self
      */
     public function setActors($actors)
     {
         $this->actors = $actors;
+
+        return $this;
+    }
+
+    /**
+     * Add actor
+     *
+     * @param Actor $actor
+     */
+    public function addActor(Actor $actor)
+    {
+        $this->actors->add($actor);
+
         return $this;
     }
 
@@ -178,6 +191,14 @@ class Film
     public function setCategories($categories)
     {
         $this->categories = $categories;
+
+        return $this;
+    }
+
+    public function addCategory(Category $category)
+    {
+        $this->categories->add($category);
+
         return $this;
     }
 

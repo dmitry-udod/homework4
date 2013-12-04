@@ -24,6 +24,8 @@ class AppKernel extends Kernel
             new Sonata\DoctrineMongoDBAdminBundle\SonataDoctrineMongoDBAdminBundle(),
 
             new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+
             new Skrepka\CompanyBundle\CompanyBundle(),
             new Skrepka\GestBookBundle\GuestBookBundle(),
             new Skrepka\UserBundle\UserBundle(),

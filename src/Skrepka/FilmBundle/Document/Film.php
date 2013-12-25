@@ -32,6 +32,12 @@ class Film
     protected $title;
 
     /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ODM\Field(name="slug")
+     */
+    private $slug;
+
+    /**
      * @var string $year
      *
      * @ODM\Field(name="year", type="string")

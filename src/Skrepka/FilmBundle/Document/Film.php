@@ -4,6 +4,7 @@ namespace Skrepka\FilmBundle\Document;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Skrepka\ActorBundle\Document\Actor;
 use Skrepka\CategoryBundle\Document\Category;
 
@@ -64,6 +65,29 @@ class Film
      * @ODM\Field(name="genres", type="string")
      */
     protected $genres;
+
+    /**
+     * @var integer $viewCounter
+     *
+     * @ODM\Field(name="view_counter", type="int")
+     */
+    protected $viewCounter = 0;
+
+    /**
+     * @var datetime $createdAt
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ODM\Field(name="created_at",type="date")
+     */
+    protected $createdAt;
+
+    /**
+     * @var datetime $updatedAt
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ODM\Field(name="updated_at", type="date")
+     */
+    protected $updatedAt;
 
     function __construct()
     {
@@ -232,5 +256,37 @@ class Film
     public function getGenres()
     {
         return $this->genres;
+    }
+
+    /**
+     * @param int $viewCounter
+     */
+    public function setViewCounter($viewCounter)
+    {
+        $this->viewCounter = $viewCounter;
+    }
+
+    /**
+     * @return int
+     */
+    public function getViewCounter()
+    {
+        return $this->viewCounter;
+    }
+
+    /**
+     * @return \Skrepka\FilmBundle\Document\datetime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @return \Skrepka\FilmBundle\Document\datetime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }

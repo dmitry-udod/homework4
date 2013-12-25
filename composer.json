@@ -24,9 +24,11 @@
         "ismaambrosi/generator-bundle": "dev-master",
         "behat/symfony2-extension": "*",
         "friendsofsymfony/user-bundle": "~2.0@dev",
+        "sonata-project/core-bundle": "~2.2@dev",
         "sonata-project/admin-bundle": "dev-master",
         "sonata-project/doctrine-mongodb-admin-bundle": "2.2.*@dev",
-        "doctrine/doctrine-fixtures-bundle": "dev-master"
+        "doctrine/doctrine-fixtures-bundle": "dev-master",
+        "stof/doctrine-extensions-bundle": "~1.1@dev"
     },
     "scripts": {
         "post-install-cmd": [

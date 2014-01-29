@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MongoDBBundle\DoctrineMongoDBBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new IamPersistent\MongoDBAclBundle\IamPersistentMongoDBAclBundle(),
 
             new Skrepka\CompanyBundle\CompanyBundle(),
             new Skrepka\GestBookBundle\GuestBookBundle(),

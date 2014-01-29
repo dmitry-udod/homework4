@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "105415f33697dc15ad55e60c54f0f95e",
+    "hash": "b55bc6a3c5b4118f8813b7cb6e723874",
     "packages": [
         {
             "name": "behat/behat",
@@ -1271,6 +1271,51 @@
                 "uploadable"
             ],
             "time": "2013-11-09 21:23:13"
+        },
+        {
+            "name": "iampersistent/mongodb-acl-bundle",
+            "version": "dev-master",
+            "target-dir": "IamPersistent/MongoDBAclBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/iampersistent/MongoDBAclBundle.git",
+                "reference": "74c00a2d5f16136ba7594febef863d8d0b7ee0bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/iampersistent/MongoDBAclBundle/zipball/74c00a2d5f16136ba7594febef863d8d0b7ee0bc",
+                "reference": "74c00a2d5f16136ba7594febef863d8d0b7ee0bc",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/mongodb": "~1.0",
+                "php": ">=5.3.2",
+                "symfony/security": "~2.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "IamPersistent\\MongoDBAclBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "contributors",
+                    "homepage": "https://github.com/iampersistent/MongoDBAclBundle/contributors"
+                }
+            ],
+            "description": "MongoDB ACL Bundle",
+            "homepage": "https://github.com/iampersistent/MongoDBAclBundle",
+            "keywords": [
+                "acl",
+                "mongodb",
+                "security"
+            ],
+            "time": "2013-12-21 16:09:23"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -2776,7 +2821,8 @@
         "sonata-project/admin-bundle": 20,
         "sonata-project/doctrine-mongodb-admin-bundle": 20,
         "doctrine/doctrine-fixtures-bundle": 20,
-        "stof/doctrine-extensions-bundle": 20
+        "stof/doctrine-extensions-bundle": 20,
+        "iampersistent/mongodb-acl-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"

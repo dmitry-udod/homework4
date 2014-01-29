@@ -101,3 +101,7 @@ stof_doctrine_extensions:
         default:
             timestampable: true
             sluggable: true
+
+iam_persistent_mongo_db_acl:
+    acl_provider:
+        default_database: %database_name%

@@ -4,15 +4,33 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-            <link href="/css/bootstrap.min.css" rel="stylesheet">
+            {#<link href="/css/bootstrap.min.css" rel="stylesheet">#}
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <script>
+            function goLogIn(){
+                window.location.href = "{{ path('_security_check') }}";
+            }
+
+            function onFbInit() {
+                if (typeof(FB) != 'undefined' && FB != null ) {
+                    FB.Event.subscribe('auth.statusChange', function(response) {
+                        if (response.session || response.authResponse) {
+                            setTimeout(goLogIn, 500);
+                        } else {
+                            window.location.href = "{{ path('_security_logout') }}";
+                        }
+                    });
+                }
+            }
+        </script>
     </head>
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}
-            <script src="/js/jquery.v1.10.1.min.js"></script>
-            <script src="/js/bootstrap.min.js"></script>
+            {#<script src="/js/jquery.v1.10.1.min.js"></script>#}
+            {#<script src="/js/bootstrap.min.js"></script>#}
         {% endblock %}
+    <script></script>
     </body>
 </html>

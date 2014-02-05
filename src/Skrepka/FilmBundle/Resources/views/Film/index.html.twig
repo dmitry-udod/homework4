@@ -1,6 +1,8 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
+{{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}
+{{ facebook_login_button({'autologoutlink': true}) }}
 <h1>Films</h1>
 
 <table class="records_list">

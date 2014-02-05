@@ -47,3 +47,16 @@ _sonata_admin:
     resource: .
     type: sonata_admin
     prefix: /admin
+
+_security_check:
+    pattern:  /login_check
+
+_security_logout:
+    pattern:  /logout
+
+fos_facebook_channel:
+    resource: "@FOSFacebookBundle/Resources/config/routing.xml"
+
+_facebook_secured:
+      pattern: /secured/
+      defaults: { _controller: AcmeDemoBundle:Welcome:index }

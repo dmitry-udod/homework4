@@ -105,3 +105,10 @@ stof_doctrine_extensions:
 iam_persistent_mongo_db_acl:
     acl_provider:
         default_database: %database_name%
+
+fos_facebook:
+    alias:  Skrepka
+    app_id: 1417424868503486
+    secret: 9eec3b82d509890bdda12a9d6d83e4dd
+    cookie: true
+    permissions: [email, user_birthday, user_location]

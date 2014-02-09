@@ -60,6 +60,18 @@ doctrine:
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
+#        entity_managers:
+#            default:
+#                mappings:
+#                    SonataMediaBundle: ~
+#        entity_managers:
+#            default:
+#            mappings:
+#                ApplicationSonataMediaBundle: ~
+#                SonataMediaBundle: ~
+    dbal:
+        types:
+            json: Sonata\Doctrine\Types\JsonType
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -71,9 +83,10 @@ swiftmailer:
 
 #Mongo
 doctrine_mongodb:
+    default_commit_options: ~
     connections:
         default:
-            server: mongodb://localhost:27017
+            server: %mongo_server%
             options: {}
     default_database: skrepka
     document_managers:

@@ -7,6 +7,8 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Skrepka\ActorBundle\Document\Actor;
 use Skrepka\CategoryBundle\Document\Category;
+use Skrepka\FilmBundle\Document\FilmTranslation;
+use Gedmo\Translatable\Translatable;
 
 /**
  * Skrepka\FilmBundle\Document\Film
@@ -15,7 +17,7 @@ use Skrepka\CategoryBundle\Document\Category;
  * @ODM\Document(repositoryClass="Skrepka\FilmBundle\Document\FilmRepository")
  * @ODM\ChangeTrackingPolicy("DEFERRED_IMPLICIT")
  */
-class Film
+class Film implements Translatable
 {
     /**
      * @var MongoId $id
@@ -27,6 +29,7 @@ class Film
     /**
      * @var string $title
      *
+     * @Gedmo\Translatable
      * @ODM\Field(name="title", type="string")
      */
     protected $title;
@@ -47,6 +50,7 @@ class Film
     /**
      * @var string $description
      *
+     * @Gedmo\Translatable
      * @ODM\Field(name="description", type="string")
      */
     protected $description;
@@ -64,6 +68,13 @@ class Film
      * @ODM\ReferenceMany(targetDocument="Skrepka\CategoryBundle\Document\Category")
      */
     protected $categories;
+
+//    /**
+//     * @var $translations
+//     *
+//     * @ODM\ReferenceMany(targetDocument="Skrepka\FilmBundle\Document\FilmTranslation")
+//     */
+//    protected $translations;
 
     /**
      * @var string $genres
@@ -95,10 +106,16 @@ class Film
      */
     protected $updatedAt;
 
+    /**
+     * @Gedmo\Locale
+     */
+    protected $locale;
+
     function __construct()
     {
         $this->actors = new ArrayCollection();
         $this->categories = new ArrayCollection();
+        $this->translations = new ArrayCollection();
     }
 
     /**
@@ -294,5 +311,61 @@ class Film
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+//
+//    public function setLocale($locale)
+//    {
+//        $this->locale = $locale;
+//    }
+//
+//    public function getLocale()
+//    {
+//        return $this->locale;
+//    }
+//
+//    /**
+//     * Set $translations
+//     *
+//     * @param string $translations
+//     * @return self
+//     */
+//    public function setTranslations($translations)
+//    {
+////        var_dump($translations);die('$translations');
+//        $this->translations = $translations;
+//
+//        return $this;
+//    }
+//
+//    public function addTranslation(FilmTranslation $translation)
+//    {
+////        die(var_dump($translation));
+//        $this->translations->add($translation);
+//
+//        $this->setTranslations($this->translations);
+//
+//        return $this;
+//    }
+//
+//    public function removeTranslation(FilmTranslation $translation)
+//    {
+//        $this->translations->removeElement($translation);
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Get translations
+//     *
+//     * @return string $translations
+//     */
+//    public function getTranslations()
+//    {
+////var_dump($this->translations);
+//        return $this->translations;
+//    }
+    public function setTranslatableLocale($locale)
+    {
+        $this->locale = $locale;
     }
 }

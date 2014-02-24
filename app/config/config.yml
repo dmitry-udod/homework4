@@ -78,6 +78,13 @@ doctrine_mongodb:
     default_database: skrepka
     document_managers:
         default:
+            mappings:
+                gedmo_translatable:
+                    type: annotation
+                    prefix: Gedmo\Translatable\Document
+                    dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Document"
+                    alias: GedmoTranslatable # this one is optional and will default to the name set for the mapping
+                    is_bundle: false
             auto_mapping: true
 
 #FOS
@@ -96,7 +103,7 @@ sonata_block:
         # Your other blocks
 
 stof_doctrine_extensions:
-    default_locale: en_US
+    default_locale: %locale%
     mongodb:
         default:
             timestampable: true
@@ -112,3 +119,10 @@ fos_facebook:
     secret: 9eec3b82d509890bdda12a9d6d83e4dd
     cookie: true
     permissions: [email, user_birthday, user_location]
+
+# app/config/config.yml
+a2lix_translation_form:
+    locales: [ru, fr, es, de]       # [1]
+    default_required: true      # [2]
+    manager_registry: doctrine_mongodb      # [3]
+    templating: "A2lixTranslationFormBundle::default.html.twig"      # [4]

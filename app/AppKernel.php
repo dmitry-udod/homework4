@@ -29,6 +29,7 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new IamPersistent\MongoDBAclBundle\IamPersistentMongoDBAclBundle(),
             new FOS\FacebookBundle\FOSFacebookBundle(),
+            new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
 
             new Skrepka\CompanyBundle\CompanyBundle(),
             new Skrepka\GestBookBundle\GuestBookBundle(),

@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Skrepka\FilmBundle\Document\Film;
+use Skrepka\FilmBundle\Document\FilmTranslation;
 
 class FilmController extends Controller
 {
@@ -18,6 +19,16 @@ class FilmController extends Controller
      */
     public function indexAction()
     {
+//        $dm = $this->get('doctrine_mongodb')->getManager();
+//        $film = $this->get('skrepka.film.repository')->find('52fb73dab80477f3138b456b');
+//
+//        $article = $dm->find('Entity\Article', 1 /*article id*/);
+//        $film->setTitle('my title in ru');
+//        $film->setDescription('my content in ru');
+//        $film->setTranslatableLocale('ru_ru'); // change locale
+//        $dm->persist($film);
+//        $dm->flush();
+
         $films = $this->get('skrepka.film.repository')->findAll();
 
         return array('films' => $films);

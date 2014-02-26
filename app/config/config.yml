@@ -8,7 +8,7 @@ imports:
 
 framework:
     #esi:             ~
-    translator:      ~
+    translator:      { fallback: %locale% }
     secret:          %secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -78,6 +78,7 @@ doctrine_mongodb:
     default_database: skrepka
     document_managers:
         default:
+            auto_mapping: true
             mappings:
                 gedmo_translatable:
                     type: annotation
@@ -85,7 +86,12 @@ doctrine_mongodb:
                     dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Document"
                     alias: GedmoTranslatable # this one is optional and will default to the name set for the mapping
                     is_bundle: false
-            auto_mapping: true
+                gedmo_translator:
+                    type: annotation
+                    prefix: Gedmo\Translator\Document
+                    dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translator/Document"
+                    is_bundle: false
+                    alias: GedmoTranslate
 
 #FOS
 fos_user:
@@ -103,11 +109,12 @@ sonata_block:
         # Your other blocks
 
 stof_doctrine_extensions:
-    default_locale: %locale%
+    default_locale: en
     mongodb:
         default:
             timestampable: true
             sluggable: true
+            translatable: true
 
 iam_persistent_mongo_db_acl:
     acl_provider:

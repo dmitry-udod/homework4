@@ -13,6 +13,7 @@ class FilmAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('locale', 'text', array('label' => 'Locale'))
             ->add('title', 'text', array('label' => 'Title'))
             ->add('year', 'text', array('label' => 'Year'))
             ->add('description', 'text', array('label' => 'Description'))

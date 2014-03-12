@@ -11,3 +11,8 @@ film_pay:
     pattern:  /films/{id}/pay
     defaults: { _controller: FilmBundle:Film:pay }
     prefix: /films
+
+api:
+    type: rest
+    prefix: /api/films
+    resource: Skrepka\FilmBundle\Controller\RestController

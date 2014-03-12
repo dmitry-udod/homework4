@@ -19,22 +19,6 @@ class FilmAdmin extends Admin
             ->add('description', 'text', array('label' => 'Description'))
             ->add('actors', 'document', array('class' => 'Skrepka\ActorBundle\Document\Actor', 'multiple' => true))
             ->add('categories', 'document', array('class' => 'Skrepka\CategoryBundle\Document\Category', 'multiple' => true))
-//            ->add('translations', 'a2lix_translations', array('locales' => array('es')));
-//            ->add('translations', 'a2lix_translations', array(
-//                'locales' => array('de'),   // [1]
-//                'required' => false,                    // [2]
-//                'fields' => array(                      // [3]
-//                    'title' => array(                   // [3.a]
-//                        'field_type' => 'text',                 // [4]
-//                        'label' => 'DESC',                     // [4]
-//                        'locale_options' => array(            // [3.b]
-//                            'de' => array(
-//                                'label' => 'German Title'            // [4]
-//                            ),
-//                        )
-//                    )
-//                )
-//            ));
         ;
     }
 

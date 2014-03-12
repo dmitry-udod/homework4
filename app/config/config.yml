@@ -29,6 +29,7 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    exception_controller: 'FOS\RestBundle\Controller\ExceptionController::showAction'
 
 # Assetic Configuration
 assetic:
@@ -133,3 +134,32 @@ a2lix_translation_form:
     default_required: true      # [2]
     manager_registry: doctrine_mongodb      # [3]
     templating: "A2lixTranslationFormBundle::default.html.twig"      # [4]
+
+fos_rest:
+    param_fetcher_listener: true
+    body_listener: true
+    format_listener: true
+    view:
+        view_response_listener: 'force'
+        formats:
+            xml: true
+            json : true
+        templating_formats:
+            html: true
+        force_redirects:
+            html: true
+        failed_validation: HTTP_BAD_REQUEST
+        default_engine: twig
+    routing_loader:
+        default_format: json
+
+sensio_framework_extra:
+    view:
+        annotations: false
+
+jms_serializer:
+    metadata:
+        directories:
+            Films:
+                namespace_prefix: "Skrepka\\FilmBundle"
+                path: "%kernel.root_dir%/serializer/FilmBundle"

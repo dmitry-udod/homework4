@@ -32,7 +32,9 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/secured/.*, role: [IS_AUTHENTICATED_FULLY] } # This is the route secured with fos_facebook
+        - { path: ^/secured/.*, role: [IS_AUTHENTICATED_FULLY] }
+        - { path: ^/company/.*/show, role: [IS_AUTHENTICATED_ANONYMOUSLY] }
+        - { path: ^/company, role: [IS_AUTHENTICATED_FULLY] }
         - { path: ^/.*, role: [IS_AUTHENTICATED_ANONYMOUSLY] }
 
     acl:

@@ -12,9 +12,17 @@ class CompanyType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('slug')
             ->add('description')
+            ->add('city')
+            ->add('address')
+            ->add('phone')
+            ->add('email')
+            ->add('site')
+            ->add('isActive')
             ->add('lat')
             ->add('long')
+            ->add('metaData')
         ;
     }
 
@@ -27,6 +35,6 @@ class CompanyType extends AbstractType
 
     public function getName()
     {
-        return 'skrepka_companybundle_companytype';
+        return 'companyFrom';
     }
 }

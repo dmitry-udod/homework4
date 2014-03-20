@@ -1,21 +1,25 @@
 <?php
 
-namespace Skrepka\GestBookBundle\Admin;
+namespace Skrepka\CompanyBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class PostAdmin extends Admin
+class CompanyAdmin extends Admin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', 'text', array('label' => 'Post Title'))
-//            ->add('author', 'entity', array('class' => 'Acme\DemoBundle\Entity\User'))
-//            ->add('body') //if no type is specified, SonataAdminBundle tries to guess it
+            ->add('name', 'text')
+            ->add('address', 'text')
+            ->add('description', 'textarea')
+            ->add('lat', 'text')
+            ->add('long', 'text')
+            ->add('long', 'text')
+            ->add('createdBy', 'document', ['class' => 'Skrepka\UserBundle\Document\User'])
         ;
     }
 
@@ -24,6 +28,8 @@ class PostAdmin extends Admin
     {
         $datagridMapper
             ->add('name')
+            ->add('createdBy')
+            ->add('slug')
         ;
     }
 
@@ -32,6 +38,7 @@ class PostAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('name')
+            ->add('createdBy')
         ;
     }
 }

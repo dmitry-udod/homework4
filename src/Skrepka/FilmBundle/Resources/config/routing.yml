@@ -1,5 +1,5 @@
 films:
-    pattern:  /
+    pattern:  /films
     defaults: { _controller: FilmBundle:Film:index }
 
 film_view:

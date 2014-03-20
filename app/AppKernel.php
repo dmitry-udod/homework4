@@ -34,7 +34,6 @@ class AppKernel extends Kernel
             new FOS\RestBundle\FOSRestBundle(),
 
             new Skrepka\CompanyBundle\CompanyBundle(),
-            new Skrepka\GestBookBundle\GuestBookBundle(),
             new Skrepka\UserBundle\UserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Skrepka\ActorBundle\ActorBundle(),

@@ -10,15 +10,14 @@ actor:
     resource: "@ActorBundle/Resources/config/routing.yml"
     prefix:   /
 
-guest_book:
-    resource: "@GuestBookBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 company:
-    resource: "@CompanyBundle/Controller/"
-    type:     annotation
-    prefix:   /
+    resource: "@CompanyBundle/Resources/config/routing.yml"
+    prefix:   /company
+
+homepage:
+    pattern:  /
+    defaults: { _controller: CompanyBundle:Company:index }
+
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

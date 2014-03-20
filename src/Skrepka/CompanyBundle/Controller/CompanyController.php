@@ -10,26 +10,18 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Skrepka\CompanyBundle\Document\Company;
 use Skrepka\CompanyBundle\Form\CompanyType;
 
-/**
- * Company controller.
- *
- * @Route("/company")
- */
 class CompanyController extends Controller
 {
     /**
      * Lists all Company documents.
      *
-     * @Route("/", name="company")
      * @Template()
      *
      * @return array
      */
     public function indexAction()
     {
-        $dm = $this->getDocumentManager();
-
-        $documents = $dm->getRepository('CompanyBundle:Company')->findAll();
+        $documents = $this->get('company.repository')->findAll();
 
         return array('documents' => $documents);
     }
@@ -87,13 +79,10 @@ class CompanyController extends Controller
     /**
      * Finds and displays a Company document.
      *
-     * @Route("/{id}/show", name="company_show")
      * @Template()
      *
      * @param string $id The document ID
-     *
      * @return array
-     *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException If document doesn't exists
      */
     public function showAction($id)

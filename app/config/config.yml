@@ -1,10 +1,10 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: @GuestBookBundle/Resources/config/admin.xml }
     - { resource: @ActorBundle/Resources/config/admin.xml }
     - { resource: @FilmBundle/Resources/config/admin.xml }
     - { resource: @CategoryBundle/Resources/config/admin.xml }
+    - { resource: @CompanyBundle/Resources/config/admin.xml }
 
 framework:
     #esi:             ~
@@ -116,6 +116,7 @@ stof_doctrine_extensions:
             timestampable: true
             sluggable: true
             translatable: true
+            blameable: true
 
 iam_persistent_mongo_db_acl:
     acl_provider:

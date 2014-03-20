@@ -1,6 +1,6 @@
 <?php
 
-namespace Skrepka\GestBookBundle\Admin;
+namespace Skrepka\CategoryBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -13,7 +13,8 @@ class CategoryAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', 'text', array('label' => 'Category Name'))
+            ->add('name', 'text', ['label' => 'Category Name'])
+            ->add('parent', 'document', ['label' => 'Parent Category', 'class' => 'Skrepka\CategoryBundle\Document\Category', 'empty_value' => 'Choose sub-category', 'required' => false])
         ;
     }
 
@@ -22,6 +23,7 @@ class CategoryAdmin extends Admin
     {
         $datagridMapper
             ->add('name')
+            ->add('parent')
         ;
     }
 
@@ -30,6 +32,7 @@ class CategoryAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('name')
+            ->add('parent')
         ;
     }
 }

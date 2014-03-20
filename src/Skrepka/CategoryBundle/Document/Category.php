@@ -3,6 +3,7 @@
 namespace Skrepka\CategoryBundle\Document;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Skrepka\CategoryBundle\Document\Category
@@ -25,6 +26,23 @@ class Category
      * @ODM\Field(name="name", type="string")
      */
     protected $name;
+
+    /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ODM\Field(name="slug")
+     */
+    protected $slug;
+
+    /**
+     * @ODM\ReferenceOne(targetDocument="Skrepka\CategoryBundle\Document\Category")
+     */
+    protected $parent;
+
+    /**
+     * @ODM\ReferenceMany(targetDocument="Skrepka\CategoryBundle\Document\Category")
+     */
+    protected $children;
+
 
     function __toString()
     {
@@ -61,5 +79,15 @@ class Category
     public function getName()
     {
         return $this->name;
+    }
+
+    public function setParent(Category $parent = null)
+    {
+        $this->parent = $parent;
+    }
+
+    public function getParent()
+    {
+        return $this->parent;
     }
 }

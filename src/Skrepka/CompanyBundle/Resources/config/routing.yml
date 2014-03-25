@@ -3,7 +3,7 @@ company:
     defaults: { _controller: CompanyBundle:Company:index }
 
 company_show:
-    pattern:  /{id}/show
+    pattern:  /{slug}
     defaults: { _controller: CompanyBundle:Company:show }
 
 company_edit:
@@ -15,7 +15,7 @@ company_delete:
     defaults: { _controller: CompanyBundle:Company:delete }
 
 company_new:
-    pattern:  /new
+    pattern:  /new/
     defaults: { _controller: CompanyBundle:Company:new }
 
 company_create:

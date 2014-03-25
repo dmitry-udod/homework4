@@ -23,13 +23,12 @@ class CompanyController extends Controller
     {
         $documents = $this->get('company.repository')->findAll();
 
-        return array('documents' => $documents);
+        return ['documents' => $documents];
     }
 
     /**
      * Displays a form to create a new Company document.
      *
-     * @Route("/new", name="company_new")
      * @Template()
      *
      * @return array
@@ -67,7 +66,7 @@ class CompanyController extends Controller
             $dm->persist($document);
             $dm->flush();
 
-            return $this->redirect($this->generateUrl('company_show', array('id' => $document->getId())));
+            return $this->redirect($this->generateUrl('company_show', ['slug' => $document->getSlug()]));
         }
 
         return array(
@@ -81,21 +80,19 @@ class CompanyController extends Controller
      *
      * @Template()
      *
-     * @param string $id The document ID
+     * @param string $slug The document ID
      * @return array
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException If document doesn't exists
      */
-    public function showAction($id)
+    public function showAction($slug)
     {
-        $dm = $this->getDocumentManager();
-
-        $document = $dm->getRepository('CompanyBundle:Company')->find($id);
+        $document = $this->get('company.repository')->findBySlug($slug);
 
         if (!$document) {
-            throw $this->createNotFoundException('Unable to find Company document.');
+            throw $this->createNotFoundException('now_company_with_this_slug');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($document->getId());
 
         return array(
             'document' => $document,

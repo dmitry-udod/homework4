@@ -17,7 +17,7 @@
     <tbody>
     {% for document in documents %}
         <tr>
-            <td><a href="{{ path('company_show', { 'id': document.id }) }}">{{ document.id }}</a></td>
+            <td><a href="#">{{ document.id }}</a></td>
             <td>{{ document.name }}</td>
             <td>{{ document.description }}</td>
             <td>{{ document.lat }}</td>
@@ -25,7 +25,7 @@
             <td>
                 <ul>
                     <li>
-                        <a href="{{ path('company_show', { 'id': document.id }) }}">show</a>
+                        <a href="{{ path('company_show', { 'slug': document.slug }) }}">show</a>
                     </li>
                     <li>
                         <a href="{{ path('company_edit', { 'id': document.id }) }}">edit</a>

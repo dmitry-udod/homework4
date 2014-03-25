@@ -2,6 +2,7 @@
 
 namespace Skrepka\CompanyBundle\Document;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Skrepka\UserBundle\Document\User;
@@ -12,6 +13,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * Company
  *
  * @ODM\Document
+ * @ODM\Document(repositoryClass="Skrepka\CompanyBundle\Document\CompanyRepository")
  */
 class Company
 {
@@ -37,6 +39,13 @@ class Company
      * @ODM\String
      */
     protected $description;
+
+    /**
+     * @var $categories
+     *
+     * @ODM\ReferenceMany(targetDocument="Skrepka\CategoryBundle\Document\Category")
+     */
+    protected $categories;
 
     /**
      * @var City
@@ -109,6 +118,11 @@ class Company
      * @ODM\Field(name="updated_at", type="date")
      */
     protected $updatedAt;
+
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -330,5 +344,35 @@ class Company
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set categories
+     *
+     * @param string $categories
+     * @return self
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+    public function addCategory(Category $category)
+    {
+        $this->categories->add($category);
+
+        return $this;
+    }
+
+    /**
+     * Get categories
+     *
+     * @return string $categories
+     */
+    public function getCategories()
+    {
+        return $this->categories;
     }
 }

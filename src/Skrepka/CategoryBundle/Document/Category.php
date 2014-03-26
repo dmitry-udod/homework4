@@ -49,6 +49,14 @@ class Category
         return $this->name;
     }
 
+    public function getParentName()
+    {
+        if (is_null($this->parent)) {
+            return 'not_show';
+        }
+        return $this->getParent()->getName();
+    }
+
     /**
      * Get id
      *

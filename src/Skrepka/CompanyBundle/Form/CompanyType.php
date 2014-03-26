@@ -13,7 +13,14 @@ class CompanyType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('categories')
+            ->add('categories', 'document', [
+                'class'     => 'Skrepka\CategoryBundle\Document\Category',
+                'multiple'  => false,
+                'group_by'  => 'parentName',
+                'empty_value'  => 'Select Category',
+//                'group_by'  => 'name'
+//                'group_by'  => 'Skrepka\CategoryBundle\Document\CategoryRepository:'
+            ])
             ->add('city')
             ->add('address')
             ->add('phone')
@@ -35,6 +42,6 @@ class CompanyType extends AbstractType
 
     public function getName()
     {
-        return 'companyFrom';
+        return 'company';
     }
 }

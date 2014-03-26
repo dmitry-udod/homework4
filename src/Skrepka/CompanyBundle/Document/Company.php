@@ -43,9 +43,9 @@ class Company
     /**
      * @var $categories
      *
-     * @ODM\ReferenceMany(targetDocument="Skrepka\CategoryBundle\Document\Category")
+     * @ODM\ReferenceOne(targetDocument="Skrepka\CategoryBundle\Document\Category")
      */
-    protected $categories;
+    protected $category;
 
     /**
      * @var City
@@ -347,32 +347,49 @@ class Company
     }
 
     /**
-     * Set categories
-     *
-     * @param string $categories
-     * @return self
+     * @param  $category
      */
-    public function setCategories($categories)
+    public function setCategory($category)
     {
-        $this->categories = $categories;
-
-        return $this;
-    }
-
-    public function addCategory(Category $category)
-    {
-        $this->categories->add($category);
-
-        return $this;
+        $this->category = $category;
     }
 
     /**
-     * Get categories
-     *
-     * @return string $categories
+     * @return
      */
-    public function getCategories()
+    public function getCategory()
     {
-        return $this->categories;
+        return $this->category;
     }
+
+//    /**
+//     * Set categories
+//     *
+//     * @param string $categories
+//     * @return self
+//     */
+//    public function setCategories($categories)
+//    {
+//        $this->categories = $categories;
+//
+//        return $this;
+//    }
+//
+//    public function addCategory(Category $category)
+//    {
+//        $this->categories->add($category);
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Get categories
+//     *
+//     * @return string $categories
+//     */
+//    public function getCategories()
+//    {
+//        return $this->categories;
+//    }
+
 }

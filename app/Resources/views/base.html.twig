@@ -28,7 +28,10 @@
     <body>
         {% block body %}{% endblock %}
         {% block javascripts %}
-            {#<script src="/js/jquery.v1.10.1.min.js"></script>#}
+            <script src="{{ asset('js/jquery.v1.10.1.min.js') }}"></script>
+            {% javascripts '@CompanyBundle/Resources/public/js/*' %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
             {#<script src="/js/bootstrap.min.js"></script>#}
         {% endblock %}
     <script></script>

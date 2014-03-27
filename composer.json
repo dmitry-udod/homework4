@@ -33,7 +33,8 @@
         "friendsofsymfony/facebook-bundle": "1.3.*",
         "a2lix/translation-form-bundle": "2.*@dev",
         "jms/serializer-bundle": "dev-master",
-        "friendsofsymfony/rest-bundle": "1.3.*"
+        "friendsofsymfony/rest-bundle": "1.3.*",
+        "sonata-project/media-bundle": "dev-master"
 
     },
     "scripts": {

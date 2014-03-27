@@ -1,23 +1,23 @@
 company:
-    pattern:  /
+    pattern:  /companies
     defaults: { _controller: CompanyBundle:Company:index }
 
 company_show:
-    pattern:  /{slug}
+    pattern:  /{slug}/
     defaults: { _controller: CompanyBundle:Company:show }
 
 company_edit:
-    pattern:  /{id}/edit
+    pattern:  /company/{id}/edit
     defaults: { _controller: CompanyBundle:Company:edit }
 
 company_delete:
-    pattern:  /{id}/delete
+    pattern:  /company/{id}/delete
     defaults: { _controller: CompanyBundle:Company:delete }
 
 company_new:
-    pattern:  /new/
+    pattern:  /company/new
     defaults: { _controller: CompanyBundle:Company:new }
 
 company_create:
-    pattern:  /create
+    pattern:  /company/create
     defaults: { _controller: CompanyBundle:Company:create }

@@ -5,11 +5,18 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="company.repository"
+        <service id="company_repository"
                  class="Skrepka\CompanyBundle\Document\CompanyRepository"
                  factory-service="doctrine.odm.mongodb.document_manager"
                  factory-method="getRepository">
             <argument>CompanyBundle:Company</argument>
+        </service>
+
+        <service id="company_manager"
+                 class="Skrepka\CompanyBundle\CompanyManager"
+                 factory-service="doctrine.odm.mongodb.document_manager"
+                 >
+            <argument type="service" id="company_repository"/>
         </service>
     </services>
 </container>

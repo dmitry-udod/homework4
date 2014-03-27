@@ -21,7 +21,7 @@ class CompanyController extends Controller
      */
     public function indexAction()
     {
-        $documents = $this->get('company.repository')->findAll();
+        $documents = $this->get('company_manager')->all();
 
         return ['documents' => $documents];
     }
@@ -47,8 +47,6 @@ class CompanyController extends Controller
     /**
      * Creates a new Company document.
      *
-     * @Route("/create", name="company_create")
-     * @Method("POST")
      * @Template("CompanyBundle:Company:new.html.twig")
      *
      * @param Request $request
@@ -86,7 +84,7 @@ class CompanyController extends Controller
      */
     public function showAction($slug)
     {
-        $document = $this->get('company.repository')->findBySlug($slug);
+        $document = $this->get('company_repository')->findBySlug($slug);
 
         if (!$document) {
             throw $this->createNotFoundException('now_company_with_this_slug');

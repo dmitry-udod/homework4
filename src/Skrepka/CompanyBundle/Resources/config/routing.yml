@@ -3,12 +3,16 @@ company:
     defaults: { _controller: CompanyBundle:Company:index }
 
 company_show:
-    pattern:  /{slug}/
+    pattern:  /view/{slug}
     defaults: { _controller: CompanyBundle:Company:show }
 
 company_edit:
-    pattern:  /company/{id}/edit
+    pattern:  /company/{slug}/edit
     defaults: { _controller: CompanyBundle:Company:edit }
+
+company_update:
+    pattern:  /company/{id}/update
+    defaults: { _controller: CompanyBundle:Company:update }
 
 company_delete:
     pattern:  /company/{id}/delete

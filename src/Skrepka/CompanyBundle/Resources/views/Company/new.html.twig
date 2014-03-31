@@ -1,20 +1,20 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-<h1>Company creation</h1>
+<div class="heading">
+    <h1>{{ 'new_company_creation'|trans }}</h1>
+</div>
 
-<form action="{{ path('company_create') }}" method="post" {{ form_enctype(form) }}>
+{% form_theme form 'CompanyBundle:Form:fields.html.twig' %}
+
+<form class="form-horizontal" action="{{ path('company_create') }}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
     {{ form_widget(form) }}
-    <p>
-        <button type="submit">Create</button>
-    </p>
+    <button class="btn btn-primary" type="submit">{{ 'create_company'|trans }}</button>
 </form>
 
 <ul class="record_actions">
     <li>
-        <a href="{{ path('company') }}">
-            Back to the list
-        </a>
+        <a href="{{ path('company') }}">Back</a>
     </li>
 </ul>
 {% endblock %}

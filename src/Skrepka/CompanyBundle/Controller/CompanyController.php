@@ -57,7 +57,7 @@ class CompanyController extends Controller
     {
         $document = new Company();
         $form     = $this->createForm(new CompanyType(), $document);
-        $form->bind($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $dm = $this->getDocumentManager();
@@ -84,7 +84,7 @@ class CompanyController extends Controller
      */
     public function showAction($slug)
     {
-        $document = $this->get('company_repository')->findBySlug($slug);
+        $document = $this->get('company_manager')->findBySlug($slug);
 
         if (!$document) {
             throw $this->createNotFoundException('now_company_with_this_slug');
@@ -101,31 +101,25 @@ class CompanyController extends Controller
     /**
      * Displays a form to edit an existing Company document.
      *
-     * @Route("/{id}/edit", name="company_edit")
      * @Template()
-     *
-     * @param string $id The document ID
-     *
+     * @param string $slug The document ID
      * @return array
-     *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException If document doesn't exists
      */
-    public function editAction($id)
+    public function editAction($slug)
     {
-        $dm = $this->getDocumentManager();
-
-        $document = $dm->getRepository('CompanyBundle:Company')->find($id);
+        $document = $this->get('company_manager')->findBySlug($slug);
 
         if (!$document) {
-            throw $this->createNotFoundException('Unable to find Company document.');
+            throw $this->createNotFoundException('no_company_found');
         }
 
         $editForm = $this->createForm(new CompanyType(), $document);
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($document->getId());
 
         return array(
             'document'    => $document,
-            'edit_form'   => $editForm->createView(),
+            'form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -133,22 +127,18 @@ class CompanyController extends Controller
     /**
      * Edits an existing Company document.
      *
-     * @Route("/{id}/update", name="company_update")
      * @Method("POST")
      * @Template("CompanyBundle:Company:edit.html.twig")
-     *
      * @param Request $request The request object
      * @param string $id       The document ID
-     *
      * @return array
-     *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException If document doesn't exists
      */
     public function updateAction(Request $request, $id)
     {
         $dm = $this->getDocumentManager();
 
-        $document = $dm->getRepository('CompanyBundle:Company')->find($id);
+        $document = $this->get('company_manager')->find($id);
 
         if (!$document) {
             throw $this->createNotFoundException('Unable to find Company document.');
@@ -156,18 +146,18 @@ class CompanyController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm   = $this->createForm(new CompanyType(), $document);
-        $editForm->bind($request);
+        $editForm->submit($request);
 
         if ($editForm->isValid()) {
-            $dm->persist($document);
+//            $dm->persist($document);
             $dm->flush();
 
-            return $this->redirect($this->generateUrl('company_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('company_edit', ['slug' => $document->getSlug()]));
         }
 
         return array(
             'document'    => $document,
-            'edit_form'   => $editForm->createView(),
+            'form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }

@@ -12,16 +12,5 @@ use Doctrine\ODM\MongoDB\DocumentRepository;
  */
 class CategoryRepository extends DocumentRepository
 {
-    public function getParentName()
-    {
 
-        var_dump($this->getParent());
-        return null;
-        if (is_null($this->getParent())) {
-            return $this->getName();
-        }
-//        die('dd');
-//        var_dump($this->getCategories());
-        return null;
-    }
 }

@@ -16,9 +16,11 @@ class CompanyAdmin extends Admin
             ->add('name', 'text')
             ->add('address', 'text')
             ->add('description', 'textarea')
-            ->add('lat', 'text')
-            ->add('long', 'text')
-            ->add('long', 'text')
+            ->add('category')
+            ->add('email', 'text', ['required' => false])
+//            ->add('lat', 'text')
+//            ->add('long', 'text')
+//            ->add('long', 'text')
             ->add('createdBy', 'document', ['class' => 'Skrepka\UserBundle\Document\User'])
         ;
     }

@@ -49,6 +49,11 @@ class Category
         return $this->name;
     }
 
+    /**
+     * Get optgroup for select
+     *
+     * @return string
+     */
     public function getParentName()
     {
         if (is_null($this->parent)) {

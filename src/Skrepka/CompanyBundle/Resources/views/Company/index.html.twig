@@ -1,7 +1,9 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-<h1>Company list</h1>
+<div class="heading">
+    <h1>{{ 'companies'|trans }}</h1>
+</div>
 
 <table class="records_list">
     <thead>
@@ -28,7 +30,7 @@
                         <a href="{{ path('company_show', { 'slug': document.slug }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('company_edit', { 'id': document.id }) }}">edit</a>
+                        <a href="{{ path('company_edit', { 'slug': document.slug }) }}">edit</a>
                     </li>
                 </ul>
             </td>
@@ -37,11 +39,5 @@
     </tbody>
 </table>
 
-<ul>
-    <li>
-        <a href="{{ path('company_new') }}">
-            Create a new entry
-        </a>
-    </li>
-</ul>
+<a class="btn btn-small btn-primary" href="{{ path('company_new') }}">{{ 'add_your_company'|trans }}</a>
 {% endblock %}

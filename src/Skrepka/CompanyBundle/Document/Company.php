@@ -3,6 +3,7 @@
 namespace Skrepka\CompanyBundle\Document;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Skrepka\CategoryBundle\Document\Category;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Skrepka\UserBundle\Document\User;
@@ -41,7 +42,7 @@ class Company
     protected $description;
 
     /**
-     * @var $categories
+     * @var $category
      *
      * @ODM\ReferenceOne(targetDocument="Skrepka\CategoryBundle\Document\Category")
      */
@@ -68,9 +69,16 @@ class Company
     /**
      * @ODM\String
      */
+    protected $mobilePhone;
+
+    /**
+     * @Assert\Email()
+     * @ODM\String
+     */
     protected $email;
 
     /**
+     * @Assert\Url()
      * @ODM\String
      */
     protected $site;
@@ -118,11 +126,6 @@ class Company
      * @ODM\Field(name="updated_at", type="date")
      */
     protected $updatedAt;
-
-    public function __construct()
-    {
-        $this->categories = new ArrayCollection();
-    }
 
     /**
      * Get id
@@ -349,7 +352,7 @@ class Company
     /**
      * @param  $category
      */
-    public function setCategory($category)
+    public function setCategory(Category $category)
     {
         $this->category = $category;
     }
@@ -362,34 +365,13 @@ class Company
         return $this->category;
     }
 
-//    /**
-//     * Set categories
-//     *
-//     * @param string $categories
-//     * @return self
-//     */
-//    public function setCategories($categories)
-//    {
-//        $this->categories = $categories;
-//
-//        return $this;
-//    }
-//
-//    public function addCategory(Category $category)
-//    {
-//        $this->categories->add($category);
-//
-//        return $this;
-//    }
-//
-//    /**
-//     * Get categories
-//     *
-//     * @return string $categories
-//     */
-//    public function getCategories()
-//    {
-//        return $this->categories;
-//    }
+    public function setMobilePhone($mobilePhone)
+    {
+        $this->mobilePhone = $mobilePhone;
+    }
 
+    public function getMobilePhone()
+    {
+        return $this->mobilePhone;
+    }
 }

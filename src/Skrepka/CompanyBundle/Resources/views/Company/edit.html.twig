@@ -1,26 +1,25 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-<h1>Company edit</h1>
 
-<form action="{{ path('company_update', { 'id': document.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    {{ form_widget(edit_form) }}
+<div class="heading">
+    <h1>{{ 'company_edit'|trans }}</h1>
+</div>
+
+{% form_theme form 'CompanyBundle:Form:fields.html.twig' %}
+
+<form action="{{ path('company_update', { 'id': document.id }) }}" method="post" {{ form_enctype(form) }} >
+    {{ form_widget(form) }}
     <p>
-        <button type="submit">Edit</button>
+        <a  class="pull-left" href="{{ path('company') }}">{{ 'back_to_catalog'|trans }}</a>
+        <button class="pull-left btn btn-primary" type="submit">{{ 'company_save'|trans }}</button>
     </p>
 </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('company') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('company_delete', { 'id': document.id }) }}" method="post">
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+<div class="actions">
+    <form class="pull-right" action="{{ path('company_delete', { 'id': document.id }) }}" method="post">
+        {{ form_widget(delete_form) }}
+        <button class="btn btn-danger" type="submit">{{ 'company_delete'|trans }}</button>
+    </form>
+</div>
 {% endblock %}

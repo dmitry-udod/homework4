@@ -33,8 +33,8 @@
             <nav class="navbar navbar-default">
                 <ul class="nav navbar-nav">
                     <li class="{% if app.request.get('_route') == 'homepage' %}active{% endif %}"><a href="{{ path('homepage') }}">{{ 'companies'|trans }}</a></li>
-                    <li ><a href="/about/">About us</a></li>
-                    <li><a href="/services/">Services</a></li>
+                    <li ><a href="/about/">{{ 'comany_my'|trans }}</a></li>
+                    <li><a href="/services/">{{ 'categories'|trans }}</a></li>
                     <li><a href="/partners/">Partners</a></li>
                     <li><a href="/customers/">Customers</a></li>
                     <li><a href="/projects/">Projects</a></li>

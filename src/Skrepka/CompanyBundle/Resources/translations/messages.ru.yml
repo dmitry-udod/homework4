@@ -4,8 +4,16 @@ new_company_creation: Добавить компанию
 company_edit: Редактирование компании
 company_save: Сохранить
 company_delete: Удалить компанию
+comany_my: Моя компания
 add_your_company: Добавить свою компанию
 search_placeholder: Поиск
 create_company: Создать
 select_category: Выберите категорию
+categories: Категории
 form.company_name: Название
+form.company_desc: Описание
+form.company_category: Категория к которой принадлежит компания
+form.company_city: Город
+form.company_address: Адрес
+form.company_mobile: Мобильный телефон
+form.company_phone: Городской телефон

@@ -14,9 +14,7 @@ class CompanyController extends Controller
 {
     /**
      * Lists all Company documents.
-     *
      * @Template()
-     *
      * @return array
      */
     public function indexAction()
@@ -28,9 +26,7 @@ class CompanyController extends Controller
 
     /**
      * Displays a form to create a new Company document.
-     *
      * @Template()
-     *
      * @return array
      */
     public function newAction()
@@ -38,19 +34,17 @@ class CompanyController extends Controller
         $document = new Company();
         $form = $this->createForm(new CompanyType(), $document);
 
-        return array(
+        return [
             'document' => $document,
             'form'     => $form->createView()
-        );
+        ];
     }
 
     /**
-     * Creates a new Company document.
+     * Creates a new Company document
      *
      * @Template("CompanyBundle:Company:new.html.twig")
-     *
      * @param Request $request
-     *
      * @return array
      */
     public function createAction(Request $request)
@@ -67,17 +61,16 @@ class CompanyController extends Controller
             return $this->redirect($this->generateUrl('company_show', ['slug' => $document->getSlug()]));
         }
 
-        return array(
+        return [
             'document' => $document,
             'form'     => $form->createView()
-        );
+        ];
     }
 
     /**
-     * Finds and displays a Company document.
+     * Finds and displays a Company document
      *
      * @Template()
-     *
      * @param string $slug The document ID
      * @return array
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException If document doesn't exists
@@ -92,10 +85,10 @@ class CompanyController extends Controller
 
         $deleteForm = $this->createDeleteForm($document->getId());
 
-        return array(
+        return [
             'document' => $document,
             'delete_form' => $deleteForm->createView(),
-        );
+        ];
     }
 
     /**
@@ -117,15 +110,15 @@ class CompanyController extends Controller
         $editForm = $this->createForm(new CompanyType(), $document);
         $deleteForm = $this->createDeleteForm($document->getId());
 
-        return array(
-            'document'    => $document,
-            'form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
+        return [
+            'document'      => $document,
+            'form'          => $editForm->createView(),
+            'delete_form'   => $deleteForm->createView(),
+        ];
     }
 
     /**
-     * Edits an existing Company document.
+     * Edits an existing Company document
      *
      * @Method("POST")
      * @Template("CompanyBundle:Company:edit.html.twig")
@@ -136,8 +129,6 @@ class CompanyController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
-        $dm = $this->getDocumentManager();
-
         $document = $this->get('company_manager')->find($id);
 
         if (!$document) {
@@ -149,36 +140,31 @@ class CompanyController extends Controller
         $editForm->submit($request);
 
         if ($editForm->isValid()) {
-//            $dm->persist($document);
-            $dm->flush();
+            $this->getDocumentManager()->flush();
 
             return $this->redirect($this->generateUrl('company_edit', ['slug' => $document->getSlug()]));
         }
 
-        return array(
-            'document'    => $document,
-            'form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
+        return [
+            'document'      => $document,
+            'form'          => $editForm->createView(),
+            'delete_form'   => $deleteForm->createView(),
+        ];
     }
 
     /**
-     * Deletes a Company document.
+     * Deletes a Company document
      *
-     * @Route("/{id}/delete", name="company_delete")
      * @Method("POST")
-     *
      * @param Request $request The request object
      * @param string $id       The document ID
-     *
      * @return array
-     *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException If document doesn't exists
      */
     public function deleteAction(Request $request, $id)
     {
         $form = $this->createDeleteForm($id);
-        $form->bind($request);
+        $form->submit($request);
 
         if ($form->isValid()) {
             $dm = $this->getDocumentManager();
@@ -197,7 +183,7 @@ class CompanyController extends Controller
 
     private function createDeleteForm($id)
     {
-        return $this->createFormBuilder(array('id' => $id))
+        return $this->createFormBuilder(['id' => $id])
             ->add('id', 'hidden')
             ->getForm()
         ;

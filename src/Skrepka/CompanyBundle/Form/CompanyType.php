@@ -13,10 +13,11 @@ class CompanyType extends AbstractType
     {
         $builder
             ->add('name', 'text', ['label' => 'form.company_name'])
-            ->add('description', 'textarea')
+            ->add('description', 'textarea', ['label' => 'form.company_desc'])
             ->add('category', 'document', [
-                'class' => 'CategoryBundle:Category',
-                'property' => 'name',
+                'label'         => 'form.company_category',
+                'class'         => 'CategoryBundle:Category',
+                'property'      => 'name',
                 'query_builder' => function (DocumentRepository $dr) {
                     return $dr->createQueryBuilder()
                         ->sort('name', 'ASC')
@@ -25,10 +26,18 @@ class CompanyType extends AbstractType
                 'group_by' => 'parentName',
                 'empty_value' => 'select_category',
             ])
-            ->add('city')
-            ->add('address')
-            ->add('mobilePhone', 'text', ['required' => false])
-            ->add('phone', 'text', ['required' => false])
+            ->add('city', 'document', [
+                'label' => 'form.company_city',
+                'class' => 'CompanyBundle:City',
+            ])
+            ->add('address', 'text', ['label' => 'form.company_address'])
+            ->add('mobilePhone', 'text', [
+                'label'     => 'form.company_mobile',
+                'required'  => false
+            ])
+            ->add('phone', 'text', [
+                'label'     => 'form.company_phone',
+                'required'  => false])
             ->add('email', 'email', ['required' => false])
             ->add('site', 'text', ['required' => false])
             ->add('metaData', 'document', [

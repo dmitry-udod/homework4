@@ -19,7 +19,6 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @Assert\NotBlank()
      * @MongoDB\Field(name="first_name", type="string")
      */
     protected $firstName;
@@ -27,7 +26,6 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @Assert\NotBlank()
      * @MongoDB\Field(name="last_name", type="string")
      */
     protected $lastName;
@@ -35,7 +33,6 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @Assert\NotBlank()
      * @MongoDB\Field(name="credit_card", type="string")
      */
     protected $creditCard;

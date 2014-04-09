@@ -42,7 +42,7 @@ class Company
     protected $description;
 
     /**
-     * @var $category
+     * @var Category $category
      *
      * @ODM\ReferenceOne(targetDocument="Skrepka\CategoryBundle\Document\Category")
      */
@@ -86,7 +86,7 @@ class Company
     /**
      * @ODM\Boolean
      */
-    protected $isActive = false;
+    protected $isActive = true;
 
     /**
      * @ODM\String
@@ -99,7 +99,8 @@ class Company
     protected $long;
 
     /**
-     * @ODM\ReferenceOne(targetDocument="Skrepka\CompanyBundle\Document\MetaData")
+     * @var MetaData
+     * @ODM\ReferenceOne(targetDocument="Skrepka\CompanyBundle\Document\MetaData", cascade={"persist"})
      */
     protected $metaData;
 
@@ -303,11 +304,17 @@ class Company
         return $this->email;
     }
 
-    public function setMetaData($metaData)
+    /**
+     * @param MetaData $metaData
+     */
+    public function setMetaData(MetaData $metaData)
     {
         $this->metaData = $metaData;
     }
 
+    /**
+     * @return MetaData
+     */
     public function getMetaData()
     {
         return $this->metaData;
@@ -350,7 +357,7 @@ class Company
     }
 
     /**
-     * @param  $category
+     * @param  Category $category
      */
     public function setCategory(Category $category)
     {
@@ -358,7 +365,7 @@ class Company
     }
 
     /**
-     * @return
+     * @return Category
      */
     public function getCategory()
     {

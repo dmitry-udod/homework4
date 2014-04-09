@@ -24,7 +24,7 @@
                         <label class="sr-only" for="searchInput">Search</label>
                         <input class="form-control" id="searchInput" type="text" name="search" placeholder="{{ 'search_placeholder'|trans }}">
                         <div class="input-group-btn">
-                            <button type="submit" class="btn btn-primary">GO</button>
+                            <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
                         </div>
                     </div>
                 </form>
@@ -33,7 +33,19 @@
             <nav class="navbar navbar-default">
                 <ul class="nav navbar-nav">
                     <li class="{% if app.request.get('_route') == 'homepage' %}active{% endif %}"><a href="{{ path('homepage') }}">{{ 'companies'|trans }}</a></li>
-                    <li ><a href="/about/">{{ 'comany_my'|trans }}</a></li>
+                    {% if app.user %}
+                        {% if is_user_has_company(app.user) %}
+                            <li><a href="/about/">{{ 'comany_my'|trans }}</a></li>
+                        {% else %}
+                            <li class="{% if app.request.get('_route') == 'company_new' %}active{% endif %}">
+                                <a href="{{ path('company_new') }}">
+                                    <i class="glyphicon glyphicon-plus"></i> {{ 'new_company_creation'|trans }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% else %}
+                        <li><a href="{{ path('fos_user_security_login') }}">{{ 'comany_my'|trans }}</a></li>
+                    {% endif %}
                     <li><a href="/services/">{{ 'categories'|trans }}</a></li>
                     <li><a href="/partners/">Partners</a></li>
                     <li><a href="/customers/">Customers</a></li>
@@ -44,7 +56,7 @@
             {% block body %}{% endblock %}
         </div>
 
-        <footer>
+        <footer id="footer">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 twitter">

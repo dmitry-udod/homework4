@@ -2,44 +2,48 @@
 
 namespace Skrepka\UserBundle\Document;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
-use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+use Skrepka\CompanyBundle\Document\Company;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @MongoDB\Document
+ * @ODM\Document
  */
 class User extends BaseUser
 {
     /**
-     * @MongoDB\Id(strategy="auto")
+     * @ODM\Id(strategy="auto")
      */
     protected $id;
 
     /**
      * @var string
      *
-     * @MongoDB\Field(name="first_name", type="string")
+     * @ODM\Field(name="first_name", type="string")
      */
     protected $firstName;
 
     /**
      * @var string
      *
-     * @MongoDB\Field(name="last_name", type="string")
+     * @ODM\Field(name="last_name", type="string")
      */
     protected $lastName;
 
     /**
-     * @var string
+     * @var ArrayCollection $companies
      *
-     * @MongoDB\Field(name="credit_card", type="string")
+     * @ODM\ReferenceMany(targetDocument="Skrepka\CompanyBundle\Document\Company")
      */
-    protected $creditCard;
+    protected $companies;
 
     public function __construct()
     {
         parent::__construct();
+
+        $this->companies = new ArrayCollection();
     }
 
     /**
@@ -75,18 +79,25 @@ class User extends BaseUser
     }
 
     /**
-     * @param string $creditCard
+     * @param  ArrayCollection $companies
      */
-    public function setCreditCard($creditCard)
+    public function setCompanies($companies)
     {
-        $this->creditCard = $creditCard;
+        $this->companies = $companies;
     }
 
     /**
-     * @return string
+     * Get user companies
+     *
+     * @return ArrayCollection
      */
-    public function getCreditCard()
+    public function getCompanies()
     {
-        return $this->creditCard;
+        return $this->companies;
+    }
+
+    public function addCompany(Company $company)
+    {
+        $this->companies->add($company);
     }
 }

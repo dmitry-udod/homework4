@@ -1,3 +1,5 @@
+register: Регистрация
+
 companies: Каталог
 back_to_catalog: Вернутся назад
 new_company_creation: Добавить компанию
@@ -7,7 +9,8 @@ company_delete: Удалить компанию
 comany_my: Моя компания
 add_your_company: Добавить свою компанию
 search_placeholder: Поиск
-create_company: Создать
+create_company: Создать компанию
+company_main_tab: Основные данные
 select_category: Выберите категорию
 categories: Категории
 form.company_name: Название
@@ -17,3 +20,7 @@ form.company_city: Город
 form.company_address: Адрес
 form.company_mobile: Мобильный телефон
 form.company_phone: Городской телефон
+form.email: E-mail
+form.site: Сайт
+form.metaKeywords: Ключевые слова
+form.metaDescription: Описание

@@ -29,4 +29,12 @@ class CompanyRepository extends DocumentRepository
     {
         return $this->findOneBy(['slug' => $slug]);
     }
+
+    /**
+     * @param Company $company
+     */
+    public function save(Company $company)
+    {
+        $this->getDocumentManager()->persist($company);
+    }
 }

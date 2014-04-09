@@ -6752,6 +6752,70 @@ body footer .container .footer-logo {
 body footer .container .footer-logo a {
   text-decoration: underline;
 }
+
+/*//////////////////////////////////////////////////*/
 form label {
     cursor: pointer;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 110px;
+}
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 110px;
+}
+
+.col-lg-4 {
+    width: 33.33333333333333%;
+}
+
+.bootsnipp-thumb {
+    display: block;
+    padding: 4px;
+    margin-bottom: 20px;
+    /*line-height: 1.428571429;*/
+    background-color: white;
+    border: 1px solid #DDD;
+    border-radius: 4px;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.bootsnipp-thumb img {
+    width: 100%;
+}
+
+.view-counts {
+    padding-top: 5px;
+    margin-right: 10px;
+}
+
+.view-counts a {
+    text-decoration: none;
+    color: black;
+}
+.snipp-title {
+    font-size: 14px;
+    padding-top: 4px;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.snipp-title {
+    margin-left: 10px;
+}
+
+.control-group {
+    padding-bottom: 10px;
 }

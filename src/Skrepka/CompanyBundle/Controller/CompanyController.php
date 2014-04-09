@@ -55,10 +55,10 @@ class CompanyController extends Controller
 
         if ($form->isValid()) {
             $dm = $this->getDocumentManager();
-            $dm->persist($document);
+            $this->get('company_manager')->save($document);
             $dm->flush();
 
-            return $this->redirect($this->generateUrl('company_show', ['slug' => $document->getSlug()]));
+            return $this->redirect($this->generateUrl('company_edit', ['slug' => $document->getSlug()]));
         }
 
         return [
@@ -168,13 +168,7 @@ class CompanyController extends Controller
 
         if ($form->isValid()) {
             $dm = $this->getDocumentManager();
-            $document = $dm->getRepository('CompanyBundle:Company')->find($id);
-
-            if (!$document) {
-                throw $this->createNotFoundException('Unable to find Company document.');
-            }
-
-            $dm->remove($document);
+            $this->get('company_manager')->delete($id);
             $dm->flush();
         }
 

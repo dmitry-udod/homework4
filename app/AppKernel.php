@@ -41,6 +41,7 @@ class AppKernel extends Kernel
             new Skrepka\ActorBundle\ActorBundle(),
             new Skrepka\FilmBundle\FilmBundle(),
             new Skrepka\CategoryBundle\CategoryBundle(),
+//            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

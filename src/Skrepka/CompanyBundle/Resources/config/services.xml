@@ -17,6 +17,12 @@
                  factory-service="doctrine.odm.mongodb.document_manager"
                  >
             <argument type="service" id="company_repository"/>
+            <argument type="service" id="security.context"/>
+            <argument type="service" id="fos_user.user_manager"/>
+        </service>
+
+        <service id="company.twig.company_extension" class="Skrepka\CompanyBundle\Twig\CompanyExtension">
+            <tag name="twig.extension" />
         </service>
     </services>
 </container>

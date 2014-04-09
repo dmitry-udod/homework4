@@ -38,11 +38,17 @@ class CompanyType extends AbstractType
             ->add('phone', 'text', [
                 'label'     => 'form.company_phone',
                 'required'  => false])
-            ->add('email', 'email', ['required' => false])
-            ->add('site', 'text', ['required' => false])
-            ->add('metaData', 'document', [
-                'class' => 'CompanyBundle:MetaData',
-                'required' => false
+            ->add('email', 'email', [
+                'required' => false,
+                'label' => 'form.email',
+            ])
+            ->add('site', 'text', [
+                'required' => false,
+                'label' => 'form.site',
+            ])
+            ->add('metaData', new MetaDataType(), [
+                    'label' => '',
+                    'required' => false,
             ])
         ;
     }
@@ -50,7 +56,8 @@ class CompanyType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Skrepka\CompanyBundle\Document\Company'
+            'data_class' => 'Skrepka\CompanyBundle\Document\Company',
+            'cascade_validation' => true,
         ]);
     }
 

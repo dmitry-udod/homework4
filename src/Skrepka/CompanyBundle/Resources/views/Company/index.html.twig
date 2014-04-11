@@ -1,73 +1,59 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-<div class="heading">
-    <h1>{{ 'companies'|trans }}</h1>
-</div>
-<div class="container" style="padding-right: 15px;
-padding-left: 15px;
-margin-right: auto;
-margin-left: auto;
-">
-    <div class="row">
-        <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
-            <div class="thumbnail bootsnipp-thumb">
-                <div>
-                    <p class="pull-right view-counts hidden-md">
-                        <a href="http://bootsnipp.com/snippets/featured/login-form-flat" class="tip" data-toggle="tooltip" title="" data-original-title="Viewed">6.1K <i class="glyphicon glyphicon-eye-open"></i></a>
+    <div class="heading">
+        <h1>{{ 'companies'|trans }}</h1>
+    </div>
 
-                        <a href="http://bootsnipp.com/snippets/featured/login-form-flat" class="tip" data-toggle="tooltip" title="" data-original-title="Favorited">8 <i class="glyphicon glyphicon-thumbs-up"></i></a>
-                        <a href="http://bootsnipp.com/tags/3.1.0"><span class="label label-info tip" data-toggle="tooltip" title="" data-original-title="Bootstrap version">3.1.0</span></a>
-                    </p>
-                    <p class="lead snipp-title">
-                        <a href="http://bootsnipp.com/snippets/featured/login-form-flat">Login Form Flat</a>
-                    </p>
+<div class="container">
+    <div class="row">
+    {% for company in documents %}
+        <div class="badger-left badger-success" data-badger="{{ company.category.parent.name }} > {{ company.category }}">
+            <div class="row">
+                <div class="col-xs-2">
+                    <img class="img-responsive" src="http://placehold.it/100x70">
                 </div>
-                <a href="http://bootsnipp.com/snippets/featured/login-form-flat">
-                    <img src="http://bootsnipp.com/img/screenshots/cadadde3c8cc486262d8abe494a3fcac3c485d36.png" alt="Login Form Flat">
-                </a>
-                <div class="caption">
-                    <p><a href="http://bootsnipp.com/snippets/featured/login-form-flat" class="btn btn-primary btn-lg btn-block">View</a></p>
+                <div class="col-xs-22">
+                    <h4 class="company-name">
+                        <p class="pull-left hidden-md">
+                        <a href="{{ path('company_show', { 'slug': company.slug }) }}">{{ company.name }}</a>
+                        </p>
+
+                        <p class="pull-right view-counts hidden-md">
+                            <a href="#" class="tip" data-toggle="tooltip" title="" data-original-title="Viewed">6.1K <i class="glyphicon glyphicon-eye-open"></i></a>
+                            <a href="#" class="tip" data-toggle="tooltip" title="" data-original-title="Favorited">8 <i class="glyphicon glyphicon-thumbs-up"></i></a>
+                        </p>
+                    </h4>
+                    <h4>
+                        {#{{ company.description }}#}
+                    </h4>
+                    <table class="table table-condensed table-responsive table-user-information">
+                        <tbody>
+                        <tr>
+                            <td>User level:</td>
+                            <td>Administrator</td>
+                        </tr>
+                        <tr>
+                            <td>Registered since:</td>
+                            <td>11/12/2013</td>
+                        </tr>
+                        <tr>
+                            <td>Topics</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>Warnings</td>
+                            <td>0</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-24">
+                    <a href="{{ path('company_show', { 'slug': company.slug }) }}" class="view-button btn btn-primary btn-lg btn-block center-block">{{ 'main_page.view_button'|trans }}</a>
                 </div>
             </div>
         </div>
+    {% endfor %}
     </div>
 </div>
-<table class="records_list">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Lat</th>
-            <th>Long</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for document in documents %}
-        <tr>
-            <td><a href="#">{{ document.id }}</a></td>
-            <td>{{ document.name }}</td>
-            <td>{{ document.description }}</td>
-            <td>{{ document.lat }}</td>
-            <td>{{ document.long }}</td>
-            <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('company_show', { 'slug': document.slug }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('company_edit', { 'slug': document.slug }) }}">edit</a>
-                    </li>
-                </ul>
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-
-<a class="btn btn-small btn-primary" href="{{ path('company_new') }}">
-    <i class="glyphicon glyphicon-plus"></i> {{ 'new_company_creation'|trans }}
-</a>
 {% endblock %}

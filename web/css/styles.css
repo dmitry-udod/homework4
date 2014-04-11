@@ -2192,7 +2192,7 @@ output {
   padding: 6px 12px;
   font-size: 12px;
   line-height: 1.428571429;
-  color: #b2b2b2;
+  color: #555;
   vertical-align: middle;
   background-color: #f3f3f3;
   background-image: none;
@@ -6774,9 +6774,9 @@ body {
     height: 110px;
 }
 
-.col-lg-4 {
-    width: 33.33333333333333%;
-}
+/*.col-lg-4 {*/
+    /*width: 33.33333333333333%;*/
+/*}*/
 
 .bootsnipp-thumb {
     display: block;
@@ -6792,11 +6792,6 @@ body {
 
 .bootsnipp-thumb img {
     width: 100%;
-}
-
-.view-counts {
-    padding-top: 5px;
-    margin-right: 10px;
 }
 
 .view-counts a {
@@ -6818,4 +6813,78 @@ body {
 
 .control-group {
     padding-bottom: 10px;
+}
+
+.error {
+    color: red;
+}
+
+#map {
+    width: 100%;
+    height: 375px;
+    paffing: 5px
+}
+
+.tab-content > .active{
+    color: #555;
+    background-color: #F8F8F8;
+    /*border: 1px solid #DDD;*/
+    /*border-bottom-color: transparent;*/
+}
+
+/* Badger
+------------------------- */
+
+[class*="badger"] {
+    position: relative;
+    margin: 15px 0;
+    padding: 29px 19px 14px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+[class*="badger"]:after {
+    content: attr(data-badger);
+    position: absolute;
+    top: 0;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    background: #999;
+    color: #fff;
+}
+
+.badger-left:after {
+    left: 0;
+    border-radius: 6px 0 6px 0;
+}
+
+.badger-right:after {
+    right: 0;
+    border-radius: 0 6px 0 6px;
+}
+
+.badger-danger:after {
+    background: #d9534f;
+}
+
+.badger-warning:after {
+    background: #f0ad4e;
+}
+
+.badger-success:after {
+    background: #5cb85c;
+}
+
+.badger-info:after {
+    background: #5bc0de;
+}
+
+.badger-inverse:after {
+    background: #222;
+}
+
+.view-button {
+    width:200px;
 }

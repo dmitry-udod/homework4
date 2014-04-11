@@ -5,28 +5,31 @@ namespace Skrepka\CompanyBundle;
 use FOS\UserBundle\Doctrine\UserManager;
 use Skrepka\CompanyBundle\Document\Company;
 use Skrepka\CompanyBundle\Document\CompanyRepository;
+use Skrepka\CompanyBundle\Document\File\MediaRepository;
 use Skrepka\UserBundle\Document\User;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\SecurityContext;
 
 class CompanyManager
 {
+    /** @var CompanyRepository */
     protected $companyRepo;
 
-    /**
-     * @var SecurityContext
-     */
+    /**@var SecurityContext */
     protected $context;
 
-    /**
-     * @var UserManager
-     */
+    /** @var UserManager */
     protected $userManager;
 
-    public function __construct(CompanyRepository $companyRepo, SecurityContext $context, $userManager)
+    /** @var MediaRepository */
+    protected $mediaRepo;
+
+    public function __construct(CompanyRepository $companyRepo, SecurityContext $context, $userManager, MediaRepository $mediaRepo)
     {
         $this->companyRepo = $companyRepo;
         $this->context = $context;
         $this->userManager = $userManager;
+        $this->mediaRepo = $mediaRepo;
     }
 
     /**
@@ -74,6 +77,14 @@ class CompanyManager
         $user = $this->context->getToken()->getUser();
         $user->addCompany($company);
         $this->userManager->updateUser($user, false);
+
+        // Process company logo
+        $file = $company->getLogo();
+
+        if($file instanceof UploadedFile) {
+            $media = $this->mediaRepo->upload($file);
+            $company->setLogo($media);
+        }
     }
 
     public function delete($id)

@@ -12,6 +12,10 @@ class CompanyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('logo', 'file', array(
+                'required' => false,
+                'data_class' => 'Skrepka\CompanyBundle\Document\File\Media',
+            ))
             ->add('name', 'text', ['label' => 'form.company_name'])
             ->add('description', 'textarea', ['label' => 'form.company_desc'])
             ->add('category', 'document', [
@@ -45,6 +49,7 @@ class CompanyType extends AbstractType
             ->add('site', 'text', [
                 'required' => false,
                 'label' => 'form.site',
+                'attr' => ['placeholder' => 'http://my-site.com'],
             ])
             ->add('metaData', new MetaDataType(), [
                     'label' => '',

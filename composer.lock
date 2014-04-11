@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "b6fb315923499307db5eff3a1d37ebbb",
+    "hash": "57a2f6fe61cbdfcf95d9cfc873454bf3",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -2249,16 +2249,16 @@
         },
         {
             "name": "knplabs/gaufrette",
-            "version": "v0.1.7",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/Gaufrette.git",
-                "reference": "4663c6605e3c96d4b9affa1c38dc66a4d8e1fedf"
+                "reference": "c2b6af8eb6fc093409ee0753137817dce1673763"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/Gaufrette/zipball/4663c6605e3c96d4b9affa1c38dc66a4d8e1fedf",
-                "reference": "4663c6605e3c96d4b9affa1c38dc66a4d8e1fedf",
+                "url": "https://api.github.com/repos/KnpLabs/Gaufrette/zipball/c2b6af8eb6fc093409ee0753137817dce1673763",
+                "reference": "c2b6af8eb6fc093409ee0753137817dce1673763",
                 "shasum": ""
             },
             "require": {
@@ -2276,7 +2276,7 @@
                 "phpspec/phpspec": "2.0.*",
                 "phpunit/phpunit": "3.7.*",
                 "rackspace/php-cloudfiles": "*",
-                "rackspace/php-opencloud": "1.6.*"
+                "rackspace/php-opencloud": "1.9.*"
             },
             "suggest": {
                 "amazonwebservices/aws-sdk-for-php": "to use the legacy Amazon S3 adapters",
@@ -2328,7 +2328,67 @@
                 "filesystem",
                 "media"
             ],
-            "time": "2014-02-24 18:17:33"
+            "time": "2014-03-24 21:53:22"
+        },
+        {
+            "name": "knplabs/knp-gaufrette-bundle",
+            "version": "dev-master",
+            "target-dir": "Knp/Bundle/GaufretteBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/KnpGaufretteBundle.git",
+                "reference": "ae598e6114b4274b8e9edcabe44d4522318dc4ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KnpLabs/KnpGaufretteBundle/zipball/ae598e6114b4274b8e9edcabe44d4522318dc4ad",
+                "reference": "ae598e6114b4274b8e9edcabe44d4522318dc4ad",
+                "shasum": ""
+            },
+            "require": {
+                "knplabs/gaufrette": "0.2.*@dev",
+                "symfony/framework-bundle": "2.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*",
+                "symfony/console": "2.*",
+                "symfony/yaml": "2.*"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Knp\\Bundle\\GaufretteBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Antoine Hérault",
+                    "email": "antoine.herault@gmail.com",
+                    "homepage": "https://github.com/Herzult"
+                },
+                {
+                    "name": "The contributors",
+                    "homepage": "https://github.com/knplabs/KnpGaufretteBundle/contributors"
+                }
+            ],
+            "description": "Allows to easily use the Gaufrette library in a Symfony project",
+            "homepage": "http://knplabs.com",
+            "keywords": [
+                "abstraction",
+                "file",
+                "filesystem",
+                "media"
+            ],
+            "time": "2014-03-27 08:59:55"
         },
         {
             "name": "knplabs/knp-menu",
@@ -4324,6 +4384,123 @@
             "time": "2013-12-06 07:47:10"
         },
         {
+            "name": "vich/uploader-bundle",
+            "version": "dev-master",
+            "target-dir": "Vich/UploaderBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dustin10/VichUploaderBundle.git",
+                "reference": "e91577a71b8879eb8f3eb33a73eb1f1c72138d95"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dustin10/VichUploaderBundle/zipball/e91577a71b8879eb8f3eb33a73eb1f1c72138d95",
+                "reference": "e91577a71b8879eb8f3eb33a73eb1f1c72138d95",
+                "shasum": ""
+            },
+            "require": {
+                "jms/metadata": "~1.5",
+                "php": ">=5.3.2",
+                "symfony/finder": ">=2.0",
+                "symfony/framework-bundle": "~2.0",
+                "symfony/property-access": "~2.3"
+            },
+            "require-dev": {
+                "doctrine/mongodb-odm": "@dev",
+                "doctrine/orm": "@stable",
+                "knplabs/knp-gaufrette-bundle": "*",
+                "matthiasnoback/symfony-dependency-injection-test": "0.*",
+                "mikey179/vfsstream": "~1.0",
+                "oneup/flysystem-bundle": "dev-master",
+                "phpunit/phpunit": "~3.7",
+                "symfony/yaml": "@stable"
+            },
+            "suggest": {
+                "doctrine/doctrine-bundle": "*",
+                "doctrine/mongodb-odm-bundle": "*",
+                "doctrine/orm": "*",
+                "knplabs/knp-gaufrette-bundle": "*",
+                "symfony/yaml": "@stable",
+                "willdurand/propel-eventdispatcher-bundle": ">=1.2"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Vich\\UploaderBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dustin Dobervich",
+                    "email": "ddobervich@gmail.com",
+                    "homepage": "http://www.dobervich.com"
+                }
+            ],
+            "description": "Ease file uploads attached to entities",
+            "homepage": "https://github.com/dustin10/VichUploaderBundle",
+            "keywords": [
+                "file uploads",
+                "upload"
+            ],
+            "time": "2014-04-08 12:41:13"
+        },
+        {
+            "name": "vlabs/media-bundle",
+            "version": "dev-master",
+            "target-dir": "Vlabs/MediaBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/V-labs/VlabsMediaBundle.git",
+                "reference": "5bab2a6df168f10ab15377c721b40670b180287b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/V-labs/VlabsMediaBundle/zipball/5bab2a6df168f10ab15377c721b40670b180287b",
+                "reference": "5bab2a6df168f10ab15377c721b40670b180287b",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": "*",
+                "imagine/imagine": "<=0.5",
+                "knplabs/knp-gaufrette-bundle": "dev-master",
+                "php": ">=5.3.2",
+                "symfony/finder": ">=2.1",
+                "symfony/form": ">=2.1 | >=2.3",
+                "symfony/validator": ">=2.1 | >=2.3"
+            },
+            "require-dev": {
+                "doctrine/mongodb-odm-bundle": "*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Vlabs\\MediaBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Valentin Ferriere",
+                    "email": "valentin.ferriere@gmail.com",
+                    "homepage": "http://www.v-labs.fr"
+                }
+            ],
+            "description": "Form, database and filesystem abstraction for files",
+            "keywords": [
+                "files",
+                "media",
+                "upload"
+            ],
+            "time": "2014-02-20 22:49:29"
+        },
+        {
             "name": "willdurand/jsonp-callback-validator",
             "version": "v1.1.0",
             "source": {
@@ -4435,10 +4612,11 @@
         "iampersistent/mongodb-acl-bundle": 20,
         "a2lix/translation-form-bundle": 20,
         "jms/serializer-bundle": 20,
-        "sonata-project/media-bundle": 20,
         "behat/behat": 0,
         "behat/mink": 0,
-        "liip/imagine-bundle": 20
+        "liip/imagine-bundle": 20,
+        "knplabs/gaufrette": 20,
+        "vich/uploader-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"

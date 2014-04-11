@@ -1,0 +1,7 @@
+app/cache
+app/logs
+/vendor
+composer.phar
+.DS_Store
+.idea
+/web/uploads

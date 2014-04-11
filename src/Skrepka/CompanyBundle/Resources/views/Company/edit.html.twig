@@ -6,41 +6,15 @@
     <h1>{{ 'company_edit'|trans }}</h1>
 </div>
 
-{% form_theme form 'CompanyBundle:Form:fields.html.twig' %}
-<ul class="nav nav-tabs">
-    <li class="active"><a href="#main" data-toggle="tab">{{ 'company_main_tab'|trans }}</a></li>
-    <li><a href="#meta" data-toggle="tab">Meta-данные</a></li>
-    {#<li><a href="#messages" data-toggle="tab">Messages</a></li>#}
-    {#<li><a href="#settings" data-toggle="tab">Settings</a></li>#}
-</ul>
-
-<form action="{{ path('company_update', { 'id': document.id }) }}" method="post" {{ form_enctype(form) }} >
-    <div class="tab-content">
-        <div class="tab-pane active" id="main">
-            {{ form_row(form.name) }}
-            {{ form_row(form.description) }}
-            {{ form_row(form.category) }}
-            {{ form_row(form.city) }}
-            {{ form_row(form.address) }}
-            {{ form_row(form.mobilePhone) }}
-            {{ form_row(form.phone) }}
-            {{ form_row(form.email) }}
-            {{ form_row(form.site) }}
-        </div>
-        <div class="tab-pane" id="meta">
-            {{ form_row(form.metaData) }}
-        </div>
-    </div>
-    {{ form_rest(form) }}
-    <p>
-        <button class="pull-left btn btn-primary" type="submit">{{ 'company_save'|trans }}</button>
-    </p>
-</form>
+{{ include('CompanyBundle:Company:_form.html.twig', {is_create_page: false}) }}
 
 <div class="actions">
     <form class="pull-right" action="{{ path('company_delete', { 'id': document.id }) }}" method="post">
         {{ form_widget(delete_form) }}
-        <button class="btn btn-danger" type="submit">{{ 'company_delete'|trans }}</button>
+        <button class="btn btn-danger" type="submit">
+            <i class="glyphicon glyphicon-trash"></i>
+            {{ 'company_delete'|trans }}
+        </button>
     </form>
 </div>
 {% endblock %}

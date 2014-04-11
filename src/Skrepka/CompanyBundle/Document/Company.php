@@ -2,7 +2,6 @@
 
 namespace Skrepka\CompanyBundle\Document;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Skrepka\CategoryBundle\Document\Category;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
@@ -44,6 +43,7 @@ class Company
     /**
      * @var Category $category
      *
+     * @Assert\NotBlank()
      * @ODM\ReferenceOne(targetDocument="Skrepka\CategoryBundle\Document\Category")
      */
     protected $category;
@@ -82,6 +82,22 @@ class Company
      * @ODM\String
      */
     protected $site;
+
+    /**
+     * *  @Assert\File(
+     *     maxSize="1M",
+     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
+     * )
+     * @ODM\ReferenceOne(targetDocument="Skrepka\CompanyBundle\Document\File\Media")
+     */
+    protected $logo;
+
+    /**
+     * @ODM\String
+     *
+     * @var string $imageName
+     */
+    protected $imageName;
 
     /**
      * @ODM\Boolean
@@ -380,5 +396,44 @@ class Company
     public function getMobilePhone()
     {
         return $this->mobilePhone;
+    }
+
+    /**
+     * Set logo
+     *
+     * @param $logo
+     * @return Company
+     */
+    public function setLogo($logo)
+    {
+        $this->logo = $logo;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return Image
+     */
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+
+    /**
+     * @param string $imageName
+     */
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
     }
 }

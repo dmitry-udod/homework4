@@ -2,7 +2,7 @@
 {% spaceless %}
     {% if errors|length > 0 %}
         {% for error in errors %}
-            <span class="help-inline alert-danger">{{ error.message }}</span>
+            <span class="help-inline error">{{ error.message }}</span>
         {% endfor %}
     {% endif %}
 {% endspaceless %}
@@ -11,8 +11,9 @@
 {% block form_row %}
     {#col-md-7#}
     <div class="control-group ">
-        {{ form_label(form) }}{{ form_errors(form) }}
+        {{ form_label(form) }}
         <div class="controls">
+            {{ form_errors(form) }}
             {{ form_widget(form, { 'attr': {'class': 'form-control'} }) }}
         </div>
     </div>

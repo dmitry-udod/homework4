@@ -2,7 +2,6 @@
 
 namespace Skrepka\CompanyBundle\Document;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\DocumentRepository;
 use Skrepka\CompanyBundle\Document\Company;
 

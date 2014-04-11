@@ -1,0 +1,53 @@
+{% form_theme form 'CompanyBundle:Form:fields.html.twig' %}
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#main" data-toggle="tab">{{ 'company_main_tab'|trans }}</a></li>
+    <li><a href="#meta" data-toggle="tab">Meta-данные</a></li>
+</ul>
+
+<!-- Tab panes -->
+{% if is_create_page %}
+<form id="create" class="form-horizontal" action="{{ path('company_create') }}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
+{% else %}
+<form action="{{ path('company_update', { 'id': document.id }) }}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
+{% endif %}
+    <div class="tab-content">
+        <div class="tab-pane active" id="main">
+            <div clas="col-lg-24">
+                <div class="pull-left col-lg-13">
+                {{ form_row(form.name) }}
+                {{ form_row(form.description) }}
+                {{ form_row(form.category) }}
+                {{ form_row(form.city) }}
+                {{ form_row(form.address) }}
+                {{ form_row(form.mobilePhone) }}
+                {{ form_row(form.phone) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.site) }}
+                </div>
+                <div class="pull-right col-lg-11" style="border: 1px red solid">
+                    <div id="logo" class="col-lg-24">
+                        {{ form_row(form.logo) }}
+                    </div>
+                    <div id="map" class="col-lg-24"></div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="meta">
+            {{ form_row(form.metaData) }}
+        </div>
+    </div>
+    {{ form_rest(form) }}
+        <div class="col-lg-24">
+            <hr>
+            <button class="btn btn-primary {% if is_create_page %}center-block {% endif %}" type="submit">
+                {% if is_create_page %}
+                    <i class="glyphicon glyphicon-plus"></i>
+                    {{ 'create_company'|trans }}
+                {% else %}
+                    <i class="glyphicon glyphicon-floppy-saved"></i>
+                    {{ 'company_save'|trans }}
+                {% endif %}
+            </button>
+        </div>
+</form>

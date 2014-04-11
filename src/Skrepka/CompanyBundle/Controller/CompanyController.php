@@ -134,13 +134,14 @@ class CompanyController extends Controller
         if (!$document) {
             throw $this->createNotFoundException('Unable to find Company document.');
         }
+//        var_dump($document->getLogo()->getReference());
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm   = $this->createForm(new CompanyType(), $document);
         $editForm->submit($request);
 
         if ($editForm->isValid()) {
-            $this->getDocumentManager()->flush();
+            //$this->getDocumentManager()->flush();
 
             return $this->redirect($this->generateUrl('company_edit', ['slug' => $document->getSlug()]));
         }

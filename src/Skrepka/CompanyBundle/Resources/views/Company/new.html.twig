@@ -5,48 +5,6 @@
     <h1>{{ 'new_company_creation'|trans }}</h1>
 </div>
 
-{% form_theme form 'CompanyBundle:Form:fields.html.twig' %}
+{{ include('CompanyBundle:Company:_form.html.twig', {is_create_page: true}) }}
 
-<ul class="nav nav-tabs">
-    <li class="active"><a href="#main" data-toggle="tab">{{ 'company_main_tab'|trans }}</a></li>
-    <li><a href="#meta" data-toggle="tab">Meta-данные</a></li>
-    {#<li><a href="#messages" data-toggle="tab">Messages</a></li>#}
-    {#<li><a href="#settings" data-toggle="tab">Settings</a></li>#}
-</ul>
-
-<!-- Tab panes -->
-<form id="create" class="form-horizontal" action="{{ path('company_create') }}" method="post" {{ form_enctype(form) }} novalidate="novalidate">
-    <div class="tab-content">
-        <div class="tab-pane active" id="main">
-            {{ form_row(form.name) }}
-            {{ form_row(form.description) }}
-            {{ form_row(form.category) }}
-            {{ form_row(form.city) }}
-            {{ form_row(form.address) }}
-            {{ form_row(form.mobilePhone) }}
-            {{ form_row(form.phone) }}
-            {{ form_row(form.email) }}
-            {{ form_row(form.site) }}
-        </div>
-        <div class="tab-pane" id="meta">
-            {{ form_row(form.metaData) }}
-        </div>
-    </div>
-    {{ form_rest(form) }}
-    <div class="text-center">
-        <hr>
-        <button class="btn btn-primary" type="submit">
-            <i class="glyphicon glyphicon-plus"></i> {{ 'create_company'|trans }}
-        </button>
-    </div>
-</form>
-
-<div>
-
-{#<ul class="record_actions">#}
-    {#<li>#}
-        {#<a href="{{ path('company') }}">Back</a>#}
-    {#</li>#}
-{#</ul>#}
-</div>
 {% endblock %}

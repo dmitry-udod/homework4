@@ -25,21 +25,34 @@
                 {{ form_row(form.email) }}
                 {{ form_row(form.site) }}
                 </div>
-                <div class="pull-right col-lg-11" style="border: 1px red solid">
+                <div class="pull-right col-lg-11">
                     <div id="logo" class="col-lg-24">
-                        {{ form_row(form.logo) }}
+                        <div class="control-group ">
+                            {{ form_label(form.logo) }}
+                            <div class="controls">
+                                {% if document.logo %}
+                                    <img style="margin-bottom: 10px" width="380" src="{{ document.logo.webpath }}" >
+                                {% endif %}
+                                {{ form_errors(form.logo) }}
+                                {{ form_widget(form.logo) }}
+                                <div class="imagePreview"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div id="map" class="col-lg-24"></div>
+                    <div id="map" class="col-lg-24" style="border: 1px red solid">
+                    </div>
                 </div>
             </div>
         </div>
         <div class="tab-pane" id="meta">
-            {{ form_row(form.metaData) }}
+            <div class="col-lg-24" style="min-height: 175px">
+                {{ form_row(form.metaData) }}
+            </div>
         </div>
     </div>
     {{ form_rest(form) }}
-        <div class="col-lg-24">
-            <hr>
+        <div class="col-lg-24"><hr></div>
+        <div class="col-lg-{% if is_create_page %}24{% else %}12{% endif %}">
             <button class="btn btn-primary {% if is_create_page %}center-block {% endif %}" type="submit">
                 {% if is_create_page %}
                     <i class="glyphicon glyphicon-plus"></i>

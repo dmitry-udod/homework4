@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\RestBundle\FOSRestBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
 //            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
 //            new Vich\UploaderBundle\VichUploaderBundle(),
 

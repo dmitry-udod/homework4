@@ -9,12 +9,12 @@
 {% endblock form_errors %}
 
 {% block form_row %}
-    {#col-md-7#}
     <div class="control-group ">
         {{ form_label(form) }}
         <div class="controls">
             {{ form_errors(form) }}
-            {{ form_widget(form, { 'attr': {'class': 'form-control'} }) }}
+            {{ form_widget(form, { 'attr': {'class': 'form-control white-bg'} }) }}
+            <div class="imagePreview"></div>
         </div>
     </div>
 {% endblock form_row %}
@@ -26,5 +26,3 @@
         <span class="required" style="color:red; margin-left:2px" title="This field is required">*</span>
     {% endif %}
 {% endblock %}
-
-

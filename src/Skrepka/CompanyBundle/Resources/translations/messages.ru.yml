@@ -22,6 +22,7 @@ form.company_mobile: Мобильный телефон
 form.company_phone: Городской телефон
 form.email: E-mail
 form.site: Адрес сайт
+form.logo: Ваш логотип
 form.metaKeywords: Ключевые слова
 form.metaDescription: Описание
 

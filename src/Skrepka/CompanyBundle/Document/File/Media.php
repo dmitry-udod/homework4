@@ -4,6 +4,7 @@ namespace Skrepka\CompanyBundle\Document\File;
 
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ODM\Document
@@ -135,7 +136,17 @@ class Media
      */
     public function  getUploadDir()
     {
-        return 'uploads/' . $this->path;
+        return '/uploads/' . $this->path;
+    }
+
+    /**
+     * Get upload dir
+     *
+     * @return string
+     */
+    public function  getWebPath()
+    {
+        return $this->getUploadDir() . '/' . $this->getReference();
     }
 
     /**

@@ -42,7 +42,9 @@
         "symfony/css-selector": "2.1.9",
         "liip/imagine-bundle": "dev-master",
         "knplabs/gaufrette": "0.2.x-dev",
-        "vich/uploader-bundle": "dev-master"
+        "vich/uploader-bundle": "dev-master",
+        "knplabs/knp-paginator-bundle": "~2.4",
+        "jms/security-extra-bundle": "dev-master"
 
     },
     "scripts": {

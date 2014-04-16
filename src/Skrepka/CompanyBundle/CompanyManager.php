@@ -39,7 +39,7 @@ class CompanyManager
      */
     public function all()
     {
-        return $this->companyRepo->findAll();
+        return $this->companyRepo->all();
     }
 
     /**
@@ -71,12 +71,14 @@ class CompanyManager
      */
     public function save(Company $company)
     {
-        $this->companyRepo->save($company);
+        if (is_null($company->getId())) {
+            $this->companyRepo->save($company);
 
-        /** @var User $user  */
-        $user = $this->context->getToken()->getUser();
-        $user->addCompany($company);
-        $this->userManager->updateUser($user, false);
+            /** @var User $user  */
+            $user = $this->context->getToken()->getUser();
+            $user->addCompany($company);
+            $this->userManager->updateUser($user, false);
+        }
 
         // Process company logo
         $file = $company->getLogo();

@@ -7,6 +7,17 @@ use Skrepka\CompanyBundle\Document\Company;
 
 class CompanyRepository extends DocumentRepository
 {
+    public function all()
+    {
+        $q = $this->getDocumentManager()
+            ->createQueryBuilder('CompanyBundle:Company')
+            ->sort('createdAt', 'DESC')
+            ->field('category')->prime(true)
+        ;
+
+        return $q;
+    }
+
     /**
      * Find company by id
      *

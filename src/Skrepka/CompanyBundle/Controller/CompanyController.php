@@ -21,7 +21,14 @@ class CompanyController extends Controller
     {
         $documents = $this->get('company_manager')->all();
 
-        return ['documents' => $documents];
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $documents,
+            $this->get('request')->query->get('page', 1),
+            10
+        );
+
+        return compact('pagination');
     }
 
     /**
@@ -120,7 +127,6 @@ class CompanyController extends Controller
     /**
      * Edits an existing Company document
      *
-     * @Method("POST")
      * @Template("CompanyBundle:Company:edit.html.twig")
      * @param Request $request The request object
      * @param string $id       The document ID
@@ -134,14 +140,16 @@ class CompanyController extends Controller
         if (!$document) {
             throw $this->createNotFoundException('Unable to find Company document.');
         }
-//        var_dump($document->getLogo()->getReference());
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm   = $this->createForm(new CompanyType(), $document);
+
         $editForm->submit($request);
 
         if ($editForm->isValid()) {
-            //$this->getDocumentManager()->flush();
+
+//            $this->get('company_manager')->save($document);
+            $this->getDocumentManager()->flush();
 
             return $this->redirect($this->generateUrl('company_edit', ['slug' => $document->getSlug()]));
         }

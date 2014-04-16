@@ -3,6 +3,7 @@
 namespace Skrepka\CompanyBundle\Document;
 
 use Skrepka\CategoryBundle\Document\Category;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Skrepka\UserBundle\Document\User;
@@ -84,8 +85,8 @@ class Company
     protected $site;
 
     /**
-     * *  @Assert\File(
-     *     maxSize="1M",
+     * @Assert\File(
+     *     maxSize="2M",
      *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
      * )
      * @ODM\ReferenceOne(targetDocument="Skrepka\CompanyBundle\Document\File\Media")
@@ -375,7 +376,7 @@ class Company
     /**
      * @param  Category $category
      */
-    public function setCategory(Category $category)
+    public function setCategory($category)
     {
         $this->category = $category;
     }
@@ -419,21 +420,5 @@ class Company
     public function getLogo()
     {
         return $this->logo;
-    }
-
-    /**
-     * @param string $imageName
-     */
-    public function setImageName($imageName)
-    {
-        $this->imageName = $imageName;
-    }
-
-    /**
-     * @return string
-     */
-    public function getImageName()
-    {
-        return $this->imageName;
     }
 }

@@ -44,7 +44,12 @@
                             </li>
                         {% endif %}
                     {% else %}
-                        <li><a href="{{ path('fos_user_security_login') }}">{{ 'comany_my'|trans }}</a></li>
+                        <li>
+                            <a href="{{ path('company_new') }}">
+                                <i class="glyphicon glyphicon-plus"></i>
+                                {{ 'new_company_creation'|trans }}
+                            </a>
+                        </li>
                     {% endif %}
                     <li><a href="/services/">{{ 'categories'|trans }}</a></li>
                     <li><a href="/partners/">Partners</a></li>

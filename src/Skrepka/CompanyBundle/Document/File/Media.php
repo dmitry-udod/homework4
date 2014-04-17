@@ -60,6 +60,11 @@ class Media
      */
     protected $createdAt;
 
+    public function __toString()
+    {
+        return $this->getFilePath();
+    }
+
     /**
      * Get file name
      *
@@ -157,6 +162,11 @@ class Media
     public function getUploadRootDir()
     {
         return __DIR__.'/../../../../../web/'.$this->getUploadDir();
+    }
+
+    public function getFilePath()
+    {
+        return $this->getUploadRootDir() . '/' . $this->getReference();
     }
 
     /**

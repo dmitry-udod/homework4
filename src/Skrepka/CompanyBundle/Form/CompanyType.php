@@ -16,7 +16,7 @@ class CompanyType extends AbstractType
                 'label'      => 'form.logo',
                 'required'   => false,
                 'data_class' => 'Skrepka\CompanyBundle\Document\File\Media',
-                'attr'       => ['onchange' => 'previewImage(this,[400],5)'],
+                'attr'       => ['onchange' => 'previewImage(this,[380],5)'],
             ])
             ->add('name', 'text', ['label' => 'form.company_name'])
             ->add('description', 'textarea', ['label' => 'form.company_desc'])

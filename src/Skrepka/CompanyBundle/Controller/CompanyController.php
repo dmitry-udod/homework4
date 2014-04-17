@@ -2,6 +2,7 @@
 
 namespace Skrepka\CompanyBundle\Controller;
 
+use Skrepka\CompanyBundle\Document\File\Media;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -136,19 +137,21 @@ class CompanyController extends Controller
     public function updateAction(Request $request, $id)
     {
         $document = $this->get('company_manager')->find($id);
-
         if (!$document) {
             throw $this->createNotFoundException('Unable to find Company document.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm   = $this->createForm(new CompanyType(), $document);
+        $logo = $document->getLogo();
 
-        $editForm->submit($request);
+        $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
-
-//            $this->get('company_manager')->save($document);
+            if (is_null($editForm->get('logo')->getData())) {
+                $document->setLogo($logo);
+            }
+            $this->get('company_manager')->save($document);
             $this->getDocumentManager()->flush();
 
             return $this->redirect($this->generateUrl('company_edit', ['slug' => $document->getSlug()]));

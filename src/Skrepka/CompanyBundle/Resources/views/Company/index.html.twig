@@ -13,22 +13,26 @@
     {% for company in pagination %}
         <div class="badger-left badger-success" data-badger="{{ company.category.parent.name }} > {{ company.category }}">
             <div class="row">
-                <div class="col-xs-2">
-                    <img class="img-responsive" src="http://placehold.it/100x70">
+                <div class="col-xs-3">
+                    {% if company.logo %}
+                    <img class="img-responsive" src="{{ company.logo.webpath | imagine_filter('company_list') }}" />
+                    {% else %}
+                        add image
+                    {% endif %}
+                    <p class="text-center view-counts hidden-md">
+                        <a href="#" class="tip" data-toggle="tooltip" title="" data-original-title="Viewed">6.1K <i class="glyphicon glyphicon-eye-open"></i></a>
+                        <a href="#" class="tip" data-toggle="tooltip" title="" data-original-title="Favorited">8 <i class="glyphicon glyphicon-thumbs-up"></i></a>
+                    </p>
                 </div>
-                <div class="col-xs-22">
+                <div class="col-xs-21">
                     <h4 class="company-name">
-                        <p class="pull-left hidden-md">
-                        <a href="{{ path('company_show', { 'slug': company.slug }) }}">{{ company.name }}</a>
+                        <p class="pull-left hidden-md no-padding-top">
+                            <a href="{{ path('company_show', { 'slug': company.slug }) }}">{{ company.name }}</a>
                         </p>
 
-                        <p class="pull-right view-counts hidden-md">
-                            <a href="#" class="tip" data-toggle="tooltip" title="" data-original-title="Viewed">6.1K <i class="glyphicon glyphicon-eye-open"></i></a>
-                            <a href="#" class="tip" data-toggle="tooltip" title="" data-original-title="Favorited">8 <i class="glyphicon glyphicon-thumbs-up"></i></a>
+                        <p class="pull-right view-counts hidden-md no-padding-top" style="font-size: 12px">
+                            {{ 'main_page.company.created'|trans }} {{ company.created }}
                         </p>
-                    </h4>
-                    <h4>
-                        {#{{ company.description }}#}
                     </h4>
                     <table class="table table-condensed table-responsive table-user-information">
                         <tbody>

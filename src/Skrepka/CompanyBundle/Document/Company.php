@@ -358,7 +358,7 @@ class Company
     }
 
     /**
-     * @return \Skrepka\CompanyBundle\Document\datetime
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -420,5 +420,10 @@ class Company
     public function getLogo()
     {
         return $this->logo;
+    }
+
+    public function getCreated()
+    {
+        return $this->getCreatedAt()->format('d.m.Y');
     }
 }

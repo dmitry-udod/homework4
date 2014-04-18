@@ -32,6 +32,7 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\RestBundle\FOSRestBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new \Liip\ImagineBundle\LiipImagineBundle(),
 
             new Skrepka\CompanyBundle\CompanyBundle(),
             new Skrepka\UserBundle\UserBundle(),

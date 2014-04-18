@@ -34,7 +34,7 @@
                                 {{ form_widget(form.logo) }}
                                 <div class="imagePreview" style="margin-top: 10px">
                                     {% if document.logo %}
-                                        <img style="margin-bottom: 10px" width="380" src="{{ document.logo.webpath }}" >
+                                        <img  style="margin-bottom: 10px" src="{{ document.logo.webpath | imagine_filter('company_edit') }}" />
                                     {% endif %}
                                 </div>
                             </div>

@@ -6894,6 +6894,5 @@ body {
     border-radius: 4px;
 }
 
-.white-bg {
-    background-color: white;
-}
+.white-bg { background-color: white; }
+.no-padding-top { margin-top: 0; }

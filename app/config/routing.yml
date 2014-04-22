@@ -2,13 +2,13 @@ category:
     resource: "@CategoryBundle/Resources/config/routing.yml"
     prefix:   /
 
-film:
-    resource: "@FilmBundle/Resources/config/routing.yml"
-    prefix:   /
+#film:
+#    resource: "@FilmBundle/Resources/config/routing.yml"
+#    prefix:   /
 
-actor:
-    resource: "@ActorBundle/Resources/config/routing.yml"
-    prefix:   /
+#actor:
+#    resource: "@ActorBundle/Resources/config/routing.yml"
+#    prefix:   /
 
 company:
     resource: "@CompanyBundle/Resources/config/routing.yml"
@@ -55,3 +55,7 @@ _security_logout:
 _imagine:
     resource: .
     type:     imagine
+
+company_show:
+    pattern:  /{slug}
+    defaults: { _controller: CompanyBundle:Company:show }

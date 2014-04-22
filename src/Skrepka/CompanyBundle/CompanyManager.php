@@ -93,9 +93,34 @@ class CompanyManager
     {
         $company = $this->find($id);
 
-        $user = $this->context->getToken()->getUser();
-        $user->getCompanies()->removeElement($company);
+        if ($company instanceof Company) {
+            $user = $this->getUser();
+            $user->getCompanies()->removeElement($company);
 
-        $this->companyRepo->getDocumentManager()->remove($company);
+            $this->companyRepo->getDocumentManager()->remove($company);
+        }
+    }
+
+    /**
+     * Check is current user company owner
+     *
+     * @param Company $company
+     * @return bool
+     */
+    public function isOwner(Company $company)
+    {
+        $companies = $this->getUser()->getCompanies();
+
+        return $companies->contains($company);
+    }
+
+    /**
+     * Get current user
+     *
+     * @return User
+     */
+    private function getUser()
+    {
+        return $this->context->getToken()->getUser();
     }
 }

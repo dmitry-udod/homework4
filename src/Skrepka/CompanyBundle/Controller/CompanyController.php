@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Skrepka\CompanyBundle\Document\Company;
 use Skrepka\CompanyBundle\Form\CompanyType;
+use JMS\SecurityExtraBundle\Annotation\SecureParam;
 
 class CompanyController extends Controller
 {
@@ -111,7 +112,7 @@ class CompanyController extends Controller
     {
         $document = $this->get('company_manager')->findBySlug($slug);
 
-        if (!$document) {
+        if (!$document || !$this->isOwner($document)) {
             throw $this->createNotFoundException('no_company_found');
         }
 
@@ -137,8 +138,9 @@ class CompanyController extends Controller
     public function updateAction(Request $request, $id)
     {
         $document = $this->get('company_manager')->find($id);
-        if (!$document) {
-            throw $this->createNotFoundException('Unable to find Company document.');
+
+        if (!$document || !$this->isOwner($document)) {
+            throw $this->createNotFoundException('no_company_found');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -203,5 +205,16 @@ class CompanyController extends Controller
     private function getDocumentManager()
     {
         return $this->get('doctrine.odm.mongodb.document_manager');
+    }
+
+    /**
+     * Check is current user company owner
+     *
+     * @param $company
+     * @return bool
+     */
+    private function isOwner($company)
+    {
+        return $this->get('company_manager')->isOwner($company);
     }
 }

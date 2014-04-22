@@ -2,10 +2,6 @@ company:
     pattern:  /companies
     defaults: { _controller: CompanyBundle:Company:index }
 
-company_show:
-    pattern:  /view/{slug}
-    defaults: { _controller: CompanyBundle:Company:show }
-
 company_edit:
     pattern:  /company/{slug}/edit
     defaults: { _controller: CompanyBundle:Company:edit }

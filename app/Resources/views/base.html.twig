@@ -31,21 +31,36 @@
             </header>
 
             <nav class="navbar navbar-default">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" style="width:100%">
+                    {# Catalog #}
                     <li class="{% if app.request.get('_route') == 'homepage' %}active{% endif %}"><a href="{{ path('homepage') }}">{{ 'companies'|trans }}</a></li>
+
+                    {#Login/Logoout#}
+                    <li class="pull-right {% if app.request.get('_route') == 'fos_user_security_login' %}active{% endif %}">
+                        {% if app.user %}
+                        <a class="tip" data-toggle="tooltip" data-placement="bottom" title="{{ 'logout'|trans }}" href="{{ path('fos_user_security_logout') }}">
+                            <i class="glyphicon glyphicon-log-out"></i>
+                        </a>
+                        {% else %}
+                            <a href="{{ path('fos_user_security_login') }}">
+                                <i class="glyphicon glyphicon-log-in"></i>&nbsp;&nbsp;{{ 'login'|trans }}
+                            </a>
+                        {% endif %}
+                    </li>
+
                     {% if app.user %}
                         {% if is_user_has_company(app.user) %}
                             <li><a href="/about/">{{ 'comany_my'|trans }}</a></li>
                         {% else %}
                             <li class="pull-right {% if app.request.get('_route') == 'company_new' %}active{% endif %}">
-                                <a style="" href="{{ path('company_new') }}">
+                                <a href="{{ path('company_new') }}">
                                     <i class="glyphicon glyphicon-plus"></i> {{ 'new_company_creation'|trans }}
                                 </a>
                             </li>
                         {% endif %}
                     {% else %}
                         <li>
-                            <a href="{{ path('company_new') }}">
+                            <a class="pull-right" href="{{ path('company_new') }}">
                                 <i class="glyphicon glyphicon-plus"></i>
                                 {{ 'new_company_creation'|trans }}
                             </a>
@@ -54,7 +69,6 @@
                     <li><a href="/services/">{{ 'categories'|trans }}</a></li>
                     <li><a href="/partners/">Partners</a></li>
                     <li><a href="/customers/">Customers</a></li>
-                    <li><a href="/projects/">Projects</a></li>
                 </ul>
             </nav>
 

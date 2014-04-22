@@ -24,6 +24,7 @@
                 {{ form_row(form.phone) }}
                 {{ form_row(form.email) }}
                 {{ form_row(form.site) }}
+                {{ form_row(form.isActive, {'help': 'form.is_published.help'|trans }) }}
                 </div>
                 <div class="pull-right col-lg-11">
                     <div id="logo" class="col-lg-24">
@@ -33,7 +34,7 @@
                                 {{ form_errors(form.logo) }}
                                 {{ form_widget(form.logo) }}
                                 <div class="imagePreview" style="margin-top: 10px">
-                                    {% if document.logo %}
+                                    {% if document.id and document.logo %}
                                         <img  style="margin-bottom: 10px" src="{{ document.logo.webpath | imagine_filter('company_edit') }}" />
                                     {% endif %}
                                 </div>

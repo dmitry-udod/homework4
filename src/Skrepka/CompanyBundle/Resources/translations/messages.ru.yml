@@ -1,8 +1,11 @@
 register: Регистрация
+login: Вход
+logout: Выход
 
 companies: Каталог
 back_to_catalog: Вернутся назад
 new_company_creation: Добавить компанию
+add: Добавить
 company_edit: Редактирование компании
 company_save: Сохранить
 company_delete: Удалить компанию
@@ -25,6 +28,8 @@ form.site: Адрес сайт
 form.logo: Ваш логотип
 form.metaKeywords: Ключевые слова
 form.metaDescription: Описание
+form.is_published: Опубликовать
+form.is_published.help: Нужно ли опубликовать компанию в каталоге. Компния будет отображаться в каталоге и поиске.
 
 main_page.view_button: Подробней
 main_page.company.created: Дата добавления:

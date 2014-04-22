@@ -25,4 +25,7 @@
     {% if required %}
         <span class="required" style="color:red; margin-left:2px" title="This field is required">*</span>
     {% endif %}
+    {% if help is defined %}
+        <span class="help tip" data-toggle="tooltip" data-placement="top" title="{{ help }}" style="cursor: pointer; color: #666666;"><i class="glyphicon glyphicon-info-sign"></i></span>
+    {% endif %}
 {% endblock %}

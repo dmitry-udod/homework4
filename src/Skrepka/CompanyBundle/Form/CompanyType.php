@@ -55,8 +55,13 @@ class CompanyType extends AbstractType
                 'attr' => ['placeholder' => 'http://my-site.com'],
             ])
             ->add('metaData', new MetaDataType(), [
-                    'label' => '',
+                    'label' => ' ',
                     'required' => false,
+            ])
+            ->add('isActive', 'checkbox', [
+                    'label' => 'form.is_published',
+                    'required' => false,
+                    'empty_data' => true,
             ])
         ;
     }

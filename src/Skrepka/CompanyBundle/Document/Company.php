@@ -86,8 +86,8 @@ class Company
 
     /**
      * @Assert\File(
-     *     maxSize="2M",
-     *     mimeTypes={"image/png", "image/jpeg", "image/pjpeg"}
+     *     maxSize="5M",
+     *     mimeTypes={"image/bmp","image/png", "image/jpeg", "image/pjpeg"}
      * )
      * @ODM\ReferenceOne(targetDocument="Skrepka\CompanyBundle\Document\File\Media")
      */
@@ -303,12 +303,13 @@ class Company
 
     public function setIsActive($isActive)
     {
-        $this->isActive = $isActive;
+        var_dump((int) $isActive);
+        $this->isActive = (int) $isActive;
     }
 
     public function getIsActive()
     {
-        return $this->isActive;
+        return (bool) $this->isActive;
     }
 
     public function setEmail($email)
@@ -413,9 +414,9 @@ class Company
     }
 
     /**
-     * Get image
+     * Get logo
      *
-     * @return Image
+     * @return Media
      */
     public function getLogo()
     {

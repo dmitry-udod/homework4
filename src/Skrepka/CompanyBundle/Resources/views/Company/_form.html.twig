@@ -34,9 +34,13 @@
                                 {{ form_errors(form.logo) }}
                                 {{ form_widget(form.logo) }}
                                 <div class="imagePreview" style="margin-top: 10px">
+                                    <a href="javascript:$('#company_logo').click();return false;" class="thumbnail">
                                     {% if document.id and document.logo %}
-                                        <img  style="margin-bottom: 10px" src="{{ document.logo.webpath | imagine_filter('company_edit') }}" />
+                                        <img  src="{{ document.logo.webpath | imagine_filter('company_edit') }}" />
+                                    {% else %}
+                                        <img src="http://placehold.it/380x250" alt="Logo" />
                                     {% endif %}
+                                    </a>
                                 </div>
                             </div>
                         </div>

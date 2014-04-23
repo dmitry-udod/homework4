@@ -87,7 +87,7 @@ class Company
     /**
      * @Assert\File(
      *     maxSize="5M",
-     *     mimeTypes={"image/bmp","image/png", "image/jpeg", "image/pjpeg"}
+     *     mimeTypes={"image/bmp","image/png", "image/jpeg", "image/pjpeg", "image/gif"}
      * )
      * @ODM\ReferenceOne(targetDocument="Skrepka\CompanyBundle\Document\File\Media")
      */

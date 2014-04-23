@@ -1,6 +1,7 @@
 register: Регистрация
 login: Вход
 logout: Выход
+user_voice.tab.label: Идеи и замечания
 
 companies: Каталог
 back_to_catalog: Вернутся назад

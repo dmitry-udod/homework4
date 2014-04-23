@@ -71,21 +71,23 @@ class CompanyManager
      */
     public function save(Company $company)
     {
-        if (is_null($company->getId())) {
-            $this->companyRepo->save($company);
+        if ($this->isCurrentUserCanCreateOneMoreCompany()) {
+            if (is_null($company->getId())) {
+                $this->companyRepo->save($company);
 
-            /** @var User $user  */
-            $user = $this->context->getToken()->getUser();
-            $user->addCompany($company);
-            $this->userManager->updateUser($user, false);
-        }
+                /** @var User $user  */
+                $user = $this->context->getToken()->getUser();
+                $user->addCompany($company);
+                $this->userManager->updateUser($user, false);
+            }
 
-        // Process company logo
-        $file = $company->getLogo();
+            // Process company logo
+            $file = $company->getLogo();
 
-        if($file instanceof UploadedFile) {
-            $media = $this->mediaRepo->upload($file);
-            $company->setLogo($media);
+            if($file instanceof UploadedFile) {
+                $media = $this->mediaRepo->upload($file);
+                $company->setLogo($media);
+            }
         }
     }
 
@@ -99,6 +101,25 @@ class CompanyManager
 
             $this->companyRepo->getDocumentManager()->remove($company);
         }
+    }
+
+    /**
+     * Check is current user can create one mor company
+     *
+     * @return bool
+     */
+    public function isCurrentUserCanCreateOneMoreCompany()
+    {
+        $result = false;
+        $user = $this->getUser();
+
+        $companies = $user->getCompanies();
+
+        if ($companies->count() < 1 || $user->isSuperAdmin()) {
+            $result =  true;
+        }
+
+        return $result;
     }
 
     /**

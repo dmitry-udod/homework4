@@ -11,8 +11,10 @@ class CompanyRepository extends DocumentRepository
     {
         $q = $this->getDocumentManager()
             ->createQueryBuilder('CompanyBundle:Company')
+//            ->where('')
             ->sort('createdAt', 'DESC')
             ->field('category')->prime(true)
+            ->field('logo')->prime(true)
         ;
 
         return $q;

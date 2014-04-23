@@ -40,6 +40,10 @@ class CompanyController extends Controller
      */
     public function newAction()
     {
+        if (!$this->get('company_manager')->isCurrentUserCanCreateOneMoreCompany()) {
+            return $this->redirect($this->generateUrl('homepage'));
+        }
+
         $document = new Company();
         $form = $this->createForm(new CompanyType(), $document);
 

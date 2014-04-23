@@ -50,7 +50,7 @@
 
                     {% if app.user %}
                         {% if is_user_has_company(app.user) %}
-                            <li><a href="/about/">{{ 'comany_my'|trans }}</a></li>
+                            <li class="pull-right"><a href="/about/">{{ 'comany_my'|trans }}</a></li>
                         {% else %}
                             <li class="pull-right {% if app.request.get('_route') == 'company_new' %}active{% endif %}">
                                 <a href="{{ path('company_new') }}">
@@ -59,8 +59,8 @@
                             </li>
                         {% endif %}
                     {% else %}
-                        <li>
-                            <a class="pull-right" href="{{ path('company_new') }}">
+                        <li class="pull-right">
+                            <a href="{{ path('company_new') }}">
                                 <i class="glyphicon glyphicon-plus"></i>
                                 {{ 'new_company_creation'|trans }}
                             </a>
@@ -129,6 +129,24 @@
             {% javascripts '@CompanyBundle/Resources/public/js/*' %}
             <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}
+
+            <script>(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/KucUkHfojg9dSRxEqRpyKw.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})()</script>
+
+            <script>
+                UserVoice = window.UserVoice || [];
+                UserVoice.push(['showTab', 'classic_widget', {
+                    mode: 'full',
+                    primary_color: '#cc6d00',
+                    link_color: '#007dbf',
+                    default_mode: 'support',
+                    forum_id: 249594,
+//                    tab_label: 'Feedback & Support',
+                    tab_label: '{{ 'user_voice.tab.label'|trans }}',
+                    tab_color: '#007DBF',
+                    tab_position: 'middle-right',
+                    tab_inverted: false
+                }]);
+            </script>
         {% endblock %}
     </body>
 </html>

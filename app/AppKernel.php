@@ -33,6 +33,7 @@ class AppKernel extends Kernel
             new FOS\RestBundle\FOSRestBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new \Liip\ImagineBundle\LiipImagineBundle(),
+            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
 
             new Skrepka\CompanyBundle\CompanyBundle(),
             new Skrepka\UserBundle\UserBundle(),

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "1b2abe0588613c433bada392b4b830ed",
+    "hash": "f0f37f2c43f377105fefeb2665cfe0b8",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -5142,7 +5142,7 @@
         "liip/imagine-bundle": 20,
         "knplabs/gaufrette": 20,
         "vich/uploader-bundle": 20,
-        "jms/security-extra-bundle": 20
+        "nelmio/api-doc-bundle": 0
     },
     "platform": {
         "php": ">=5.3.3"

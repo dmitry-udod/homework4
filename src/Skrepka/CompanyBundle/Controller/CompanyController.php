@@ -90,18 +90,17 @@ class CompanyController extends Controller
      */
     public function showAction($slug)
     {
-        $document = $this->get('company_manager')->findBySlug($slug);
+        $company = $this->get('company_manager')->findBySlug($slug);
 
-        if (!$document) {
+        if (!$company) {
             throw $this->createNotFoundException('now_company_with_this_slug');
         }
+        var_dump(get_class($this->get('session')));
 
-        $deleteForm = $this->createDeleteForm($document->getId());
+        var_dump($this->getRequest()->getClientIp());
+        $this->get('company_manager')->increaseViews($this->getRequest()->getClientIp());
 
-        return [
-            'document' => $document,
-            'delete_form' => $deleteForm->createView(),
-        ];
+        return compact('company');
     }
 
     /**

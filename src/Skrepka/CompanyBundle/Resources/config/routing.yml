@@ -21,3 +21,8 @@ company_new:
 company_create:
     pattern:  /company/create
     defaults: { _controller: CompanyBundle:Company:create }
+
+api_v1:
+    type: rest
+    prefix: /api/v1
+    resource: Skrepka\CompanyBundle\Controller\ApiV1Controller

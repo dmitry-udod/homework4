@@ -100,4 +100,14 @@ class User extends BaseUser
     {
         $this->companies->add($company);
     }
+
+    /**
+     * Get User company
+     *
+     * @return Company
+     */
+    public function getCompany()
+    {
+        return $this->getCompanies()->first();
+    }
 }

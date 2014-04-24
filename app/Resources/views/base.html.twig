@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
     <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta charset="UTF-8" />
+        <meta name="description" content="{% block meta_desc %}Каталог{% endblock %}">
+        <meta name="keywords" content="{% block meta_keywords %}Каталог{% endblock %}">
         <title>{% block title %}Каталог{% endblock %}</title>
         {% block stylesheets %}
             <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
@@ -16,7 +19,7 @@
     </head>
     <body>
         <div class="wrapper container">
-
+            {% block header_and_navbar %}
             <header>
                 <a href="{{ path('homepage') }}"><img src="{{ asset('images/logo.png') }}" alt="Logo"></a>
                 <form name="search" action="#" method="get" class="form-inline form-search pull-right">
@@ -50,7 +53,9 @@
 
                     {% if app.user %}
                         {% if is_user_has_company(app.user) %}
-                            <li class="pull-right"><a href="/about/">{{ 'comany_my'|trans }}</a></li>
+                            <li class="pull-right {% if app.request.get('_route') == 'company_edit' %}active{% endif %}">
+                                <a href="{{ path('company_edit', { 'slug': app.user.company.slug }) }}">{{ 'comany_my'|trans }}</a>
+                            </li>
                         {% else %}
                             <li class="pull-right {% if app.request.get('_route') == 'company_new' %}active{% endif %}">
                                 <a href="{{ path('company_new') }}">
@@ -67,14 +72,14 @@
                         </li>
                     {% endif %}
                     <li><a href="/services/">{{ 'categories'|trans }}</a></li>
-                    <li><a href="/partners/">Partners</a></li>
-                    <li><a href="/customers/">Customers</a></li>
                 </ul>
             </nav>
+            {% endblock %}
 
             {% block body %}{% endblock %}
         </div>
 
+        {% block footer %}
         <footer id="footer">
             <div class="container">
                 <div class="row">
@@ -121,6 +126,7 @@
                 </div>
             </div>
         </footer>
+        {% endblock %}
 
         {% block javascripts %}
             <script src="{{ asset('js/jquery.v1.10.1.min.js') }}"></script>

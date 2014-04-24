@@ -192,3 +192,5 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [100, 100], mode: outbound }
+
+nelmio_api_doc: ~

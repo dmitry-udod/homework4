@@ -303,7 +303,6 @@ class Company
 
     public function setIsActive($isActive)
     {
-        var_dump((int) $isActive);
         $this->isActive = (int) $isActive;
     }
 
@@ -423,8 +422,18 @@ class Company
         return $this->logo;
     }
 
+    /**
+     * Get created at date
+     *
+     * @return string
+     */
     public function getCreated()
     {
         return $this->getCreatedAt()->format('d.m.Y');
+    }
+
+    public function getFullAddress()
+    {
+        return $this->getCity() . ', ' . $this->getAddress();
     }
 }

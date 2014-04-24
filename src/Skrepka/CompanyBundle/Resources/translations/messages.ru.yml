@@ -34,3 +34,12 @@ form.is_published.help: Нужно ли опубликовать компани�
 
 main_page.view_button: Подробней
 main_page.company.created: Дата добавления:
+catalog.address: Адрес
+catalog.mobile: Мобильный телефон
+catalog.email: Электронная почта
+catalog.phone: Городской телефон
+catalog.site: Сайт
+catalog.no_value: Не указано
+catalog.pager.count: Колличество компаний
+
+

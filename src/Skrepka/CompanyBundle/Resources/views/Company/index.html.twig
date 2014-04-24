@@ -6,8 +6,10 @@
     </div>
 
 <div class="container">
-    <div class="count pull-right" style="margin-bottom:10px">
-        {{ pagination.getTotalItemCount }}
+    <div class="row">
+        <div class="count pull-right" style="padding-right: 20px">
+            {{ 'catalog.pager.count'|trans }}: {{ pagination.getTotalItemCount }}
+        </div>
     </div>
     <div class="row">
     {% for company in pagination %}
@@ -15,7 +17,7 @@
             <div class="row">
                 <div class="col-xs-3">
                     {% if company.logo %}
-                    <img class="img-responsive" src="{{ company.logo.webpath | imagine_filter('company_list') }}" />
+                        <img class="img-responsive" src="{{ company.logo.webpath | imagine_filter('company_list') }}" />
                     {% else %}
                         add image
                     {% endif %}
@@ -36,27 +38,46 @@
                     </h4>
                     <table class="table table-condensed table-responsive table-user-information">
                         <tbody>
-                        <tr>
-                            <td>User level:</td>
-                            <td>Administrator</td>
-                        </tr>
-                        <tr>
-                            <td>Registered since:</td>
-                            <td>11/12/2013</td>
-                        </tr>
-                        <tr>
-                            <td>Topics</td>
-                            <td>15</td>
-                        </tr>
-                        <tr>
-                            <td>Warnings</td>
-                            <td>0</td>
-                        </tr>
+                            <tr>
+                                <td class="black">
+                                    <i class="glyphicon glyphicon-home"></i>
+                                    {{ 'catalog.address'|trans }}:
+                                    &nbsp;{{ company.fullAddress }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="black">
+                                    <i class="glyphicon glyphicon-envelope"></i>
+                                    {{ 'catalog.email'|trans }}:&nbsp;
+                                    {% if company.email %}{{ company.email }}{% else %}{{ 'catalog.no_value'|trans }}{% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="black">
+                                    <i class="glyphicon glyphicon-phone"></i>
+                                    {{ 'catalog.mobile'|trans }}:&nbsp;
+                                    {% if company.mobilePhone %}{{ company.mobilePhone }}{% else %}{{ 'catalog.no_value'|trans }}{% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="black">
+                                    <i class="glyphicon glyphicon-phone-alt"></i>
+                                    {{ 'catalog.phone'|trans }}:&nbsp;
+                                    {% if company.phone %}{{ company.phone }}{% else %}{{ 'catalog.no_value'|trans }}{% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="black">
+                                    <i class="glyphicon glyphicon-globe"></i>
+                                    {{ 'catalog.site'|trans }}:&nbsp;
+                                    {% if company.site %}{{ company.site }}{% else %}{{ 'catalog.no_value'|trans }}{% endif %}
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="col-lg-24">
-                    <a href="{{ path('company_show', { 'slug': company.slug }) }}" class="view-button btn btn-primary btn-lg btn-block center-block">{{ 'main_page.view_button'|trans }}</a>
+                    <a target="_blank" href="{{ path('company_show', { 'slug': company.slug }) }}" class="view-button btn btn-primary btn-lg btn-block center-block">{{ 'main_page.view_button'|trans }}</a>
                 </div>
             </div>
         </div>

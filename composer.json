@@ -44,7 +44,8 @@
         "knplabs/gaufrette": "0.2.x-dev",
         "vich/uploader-bundle": "dev-master",
         "knplabs/knp-paginator-bundle": "~2.4",
-        "friendsofsymfony/elastica-bundle": "3.0.*"
+        "friendsofsymfony/elastica-bundle": "3.0.*",
+        "nelmio/api-doc-bundle": "@stable"
 
     },
     "scripts": {

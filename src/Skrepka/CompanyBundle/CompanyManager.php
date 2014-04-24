@@ -9,6 +9,7 @@ use Skrepka\CompanyBundle\Document\File\MediaRepository;
 use Skrepka\UserBundle\Document\User;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class CompanyManager
 {
@@ -24,12 +25,22 @@ class CompanyManager
     /** @var MediaRepository */
     protected $mediaRepo;
 
-    public function __construct(CompanyRepository $companyRepo, SecurityContext $context, $userManager, MediaRepository $mediaRepo)
+    /** @var Session */
+    protected $session;
+
+    public function __construct(
+        CompanyRepository $companyRepo,
+        SecurityContext $context,
+        $userManager,
+        MediaRepository $mediaRepo,
+        Session $session
+    )
     {
         $this->companyRepo = $companyRepo;
         $this->context = $context;
         $this->userManager = $userManager;
         $this->mediaRepo = $mediaRepo;
+        $this->session = $session;
     }
 
     /**
@@ -133,6 +144,12 @@ class CompanyManager
         $companies = $this->getUser()->getCompanies();
 
         return $companies->contains($company);
+    }
+
+    public function increaseViews()
+    {
+        var_dump($this->session->getId());
+//        $this->session->
     }
 
     /**

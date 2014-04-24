@@ -27,6 +27,7 @@
             <argument type="service" id="security.context"/>
             <argument type="service" id="fos_user.user_manager"/>
             <argument type="service" id="media_repository"/>
+            <argument type="service" id="session"/>
         </service>
 
         <service id="company.twig.company_extension" class="Skrepka\CompanyBundle\Twig\CompanyExtension">

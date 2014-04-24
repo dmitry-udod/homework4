@@ -141,7 +141,7 @@ class Media
      */
     public function  getUploadDir()
     {
-        return '/uploads/' . $this->path;
+        return 'uploads/' . $this->path;
     }
 
     /**

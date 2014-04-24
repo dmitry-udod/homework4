@@ -1,0 +1,5 @@
+Skrepka\CategoryBundle\Document\Category:
+    exclusion_policy: ALL
+    properties:
+        name:
+            expose: true

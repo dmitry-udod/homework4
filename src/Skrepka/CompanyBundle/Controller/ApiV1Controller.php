@@ -3,38 +3,37 @@
 namespace Skrepka\CompanyBundle\Controller;
 
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Skrepka\CompanyBundle\Document\Company;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 class ApiV1Controller extends Controller
 {
     /**
-     * Благодоря этому методу вы можете получить список существующих компаний
+     * Благодоря этому методу можно получить список существующих компаний
      *
      * @ApiDoc(
      *  resource=true,
      *  description="Метод для получения списка компаний",
      *  filters={
-     *      {"name"="a-filter", "dataType"="integer"},
-     *      {"name"="another-filter", "dataType"="string", "pattern"="(foo|bar) ASC|DESC"}
+     *      {"name"="skip", "dataType"="integer", "description" = "Skip N first companies from companies list"}
      *  },
      * statusCodes={
      *         200="Returned when successful",
-     *         403="Returned when the user is not authorized to say hello",
-     *         404={
-     *           "Returned when the user is not found",
-     *           "Returned when something else is not found"
-     *         },
      *         500="Returned when there is a server side error"
      *     }
      * )
      * @Rest\View
+     * @Rest\Get("/companies/{skip}", requirements={"skip" = "\d+"}, defaults={"skip" = 0})
      */
-    public function getCompaniesAction()
+    public function getCompaniesAction($skip)
     {
-        $films = $this->get('skrepka.film.repository')->findAll();
+        $companies = $this->get('company_manager')->all()
+            ->limit(5)
+            ->skip($skip)
+            ->getQuery();
 
-        return array('films' => $films->toArray());
+        return ['companies' => $companies->toArray()];
     }
 
     /**
@@ -44,16 +43,24 @@ class ApiV1Controller extends Controller
      *  resource=true,
      *  description="Метод для получения информации о конкретной компании",
      *  filters={
-     *      {"name"="slug", "dataType"="string"},
-     *  }
+     *      {"name"="id", "dataType"="string"},
+     *  },
+     *  statusCodes={
+     *         200="Returned when successful",
+     *         404="Returned when the company is not found",
+     *         500="Returned when there is a server side error"
+     *     }
      * )
      * @Rest\View
      */
-    public function getCompanyAction($slug)
+    public function getCompanyAction($id)
     {
-        $films = $this->get('skrepka.film.repository')->findAll();
+        $company = $this->get('company_manager')->find($id);
 
-        return array('films' => $films->toArray());
+        if (!$company instanceof Company) {
+            throw new NotFoundHttpException('Company not found');
+        }
+
+        return [$company];
     }
-
 }

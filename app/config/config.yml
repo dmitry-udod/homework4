@@ -163,9 +163,12 @@ sensio_framework_extra:
 jms_serializer:
     metadata:
         directories:
-            Films:
-                namespace_prefix: "Skrepka\\FilmBundle"
-                path: "%kernel.root_dir%/serializer/FilmBundle"
+            Companies:
+                namespace_prefix: "Skrepka\\CompanyBundle"
+                path: "%kernel.root_dir%/serializer/CompanyBundle"
+            Categories:
+                namespace_prefix: "Skrepka\\CategoryBundle"
+                path: "%kernel.root_dir%/serializer/CategoryBundle"
 
 knp_paginator:
     page_range: 5                      # default page range used in pagination control

@@ -1,9 +1,0 @@
-Skrepka\FilmBundle\Document\Film:
-    exclusion_policy: ALL
-    properties:
-        id:
-            expose: true
-        title:
-            expose: true
-        slug:
-          expose: true

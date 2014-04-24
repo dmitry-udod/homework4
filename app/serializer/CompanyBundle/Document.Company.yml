@@ -1,0 +1,17 @@
+Skrepka\CompanyBundle\Document\Company:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+        name:
+            expose: true
+#        slug:
+#            expose: true
+        description:
+            expose: true
+        category:
+            expose: true
+        city:
+            expose: true
+        address:
+            expose: true

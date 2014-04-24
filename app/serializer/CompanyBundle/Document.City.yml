@@ -1,0 +1,5 @@
+Skrepka\CompanyBundle\Document\City:
+    exclusion_policy: ALL
+    properties:
+        name:
+            expose: true

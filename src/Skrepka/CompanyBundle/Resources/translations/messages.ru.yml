@@ -34,6 +34,8 @@ form.is_published.help: Нужно ли опубликовать компани�
 
 main_page.view_button: Подробней
 main_page.company.created: Дата добавления:
+main_page.sitemap: Карта сайта
+main_page.home: Главная
 catalog.address: Адрес
 catalog.mobile: Мобильный телефон
 catalog.email: Электронная почта
@@ -41,5 +43,8 @@ catalog.phone: Городской телефон
 catalog.site: Сайт
 catalog.no_value: Не указано
 catalog.pager.count: Колличество компаний
+
+view_company.edit_my_company: Редактировать мою компанию
+view_company.on_map: На карте
 
 

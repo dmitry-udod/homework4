@@ -1,7 +1,15 @@
 {% extends "::base.html.twig" %}
 {% block title %}{{ company.name }}{% endblock %}
-{% block meta_desc %}{{ company.metaData.metaDescription }}{% endblock %}
-{% block meta_keywords %}{{ company.metaData.metaKeywords }}{% endblock %}
+{% block meta_desc %}
+    {% if company.metaData %}
+        {{ company.metaData.metaDescription }}
+    {% endif %}
+{% endblock %}
+{% block meta_keywords %}
+    {% if company.metaData %}
+        {{ company.metaData.metaKeywords }}
+    {% endif %}
+{% endblock %}
 
 {% block stylesheets %}
     {{  parent() }}
@@ -15,56 +23,94 @@
 {% endblock %}
 
 {% block body %}
-<div class="center-block" style="width: 768px">
+    {% if is_company_owner(app.user, company) %}
+    <a id="edit-my-company" target="_blank" href="{{ path('company_edit', { 'slug': company.slug }) }}" class="btn btn-success">
+        <i class="glyphicon glyphicon-edit"></i> {{ 'view_company.edit_my_company'|trans }}
+    </a>
+    {% endif %}
+
+<div class="view-block center-block">
     <div class="header">
-        <h3 class="text-muted" style="border-bottom: 1px #bfbfbf solid">Project name</h3>
+        <h3 class="text-muted">{{ company.name }}</h3>
+    </div>
+
+    <div class="col-24" style="margin-top: 20px">
+        <div class="col-lg-12">
+            <div class="imagePreview">
+                <span class="thumbnail">
+                    {% if company.id and company.logo %}
+                        <img  src="{{ company.logo.webpath | imagine_filter('company_edit') }}" />
+                    {% else %}
+                        <img src="http://placehold.it/300x200" alt="Logo" />
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <table class="table table-condensed table-responsive table-user-information wide-rows">
+                <tbody>
+                <tr>
+                    <td class="va">
+                        <span class="black">
+                            <i class="glyphicon glyphicon-home"></i>
+                            {{ 'catalog.address'|trans }}:
+                        </span>
+                        &nbsp;{{ company.fullAddress }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="va">
+                        <span class="black">
+                            <i class="glyphicon glyphicon-envelope"></i>
+                            {{ 'catalog.email'|trans }}:&nbsp;
+                        </span>
+                        {% if company.email %}{{ company.email }}{% else %}{{ 'catalog.no_value'|trans }}{% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="va">
+                        <span class="black">
+                        <i class="glyphicon glyphicon-phone"></i>
+                        {{ 'catalog.mobile'|trans }}:&nbsp;
+                        </span>
+                        {% if company.mobilePhone %}{{ company.mobilePhone }}{% else %}{{ 'catalog.no_value'|trans }}{% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="va">
+                        <span class="black">
+                        <i class="glyphicon glyphicon-phone-alt"></i>
+                        {{ 'catalog.phone'|trans }}:&nbsp;
+                        </span>
+                        {% if company.phone %}{{ company.phone }}{% else %}{{ 'catalog.no_value'|trans }}{% endif %}
+                    </td>
+                </tr>
+                <tr style="border-bottom: 1px #ddd solid">
+                    <td class="va">
+                        <span class="black">
+                        <i class="glyphicon glyphicon-globe"></i>
+                        {{ 'catalog.site'|trans }}:&nbsp;
+                        </span>
+                        {% if company.site %}{{ company.site }}{% else %}{{ 'catalog.no_value'|trans }}{% endif %}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-24">
+            <span class="black">Описание:</span> {{ company.description }}
+        </div>
+    </div>
+    <div class="col-lg-24">
+        <br>
+        <span class="black">
+            {{ 'view_company.on_map'|trans }}:
+        </span>
+        <div style="border: 1px red solid; height: 400px"></div>
     </div>
 </div>
-
-{#<table class="record_properties">#}
-    {#<tbody>#}
-        {#<tr>#}
-            {#<th>Id</th>#}
-            {#<td>{{ document.id }}</td>#}
-        {#</tr>#}
-        {#<tr>#}
-            {#<th>Name</th>#}
-            {#<td>{{ document.name }}</td>#}
-        {#</tr>#}
-        {#<tr>#}
-            {#<th>Description</th>#}
-            {#<td>{{ document.description }}</td>#}
-        {#</tr>#}
-        {#<tr>#}
-            {#<th>Lat</th>#}
-            {#<td>{{ document.lat }}</td>#}
-        {#</tr>#}
-        {#<tr>#}
-            {#<th>Long</th>#}
-            {#<td>{{ document.long }}</td>#}
-        {#</tr>#}
-    {#</tbody>#}
-{#</table>#}
-
-{#<ul class="record_actions">#}
-    {#<li>#}
-        {#<a href="{{ path('company') }}">#}
-            {#Back to the list#}
-        {#</a>#}
-    {#</li>#}
-    {#<li>#}
-        {#<a href="{{ path('company_edit', { 'slug': document.slug }) }}">#}
-            {#Edit#}
-        {#</a>#}
-    {#</li>#}
-    {#<li>#}
-        {#<form action="{{ path('company_delete', { 'id': document.id }) }}" method="post">#}
-            {#{{ form_widget(delete_form) }}#}
-            {#<button type="submit">Delete</button>#}
-        {#</form>#}
-    {#</li>#}
-{#</ul>#}
 {% endblock %}
 
 {% block footer %}
+    <footer id="footer" style="background-color: #ffffff"></footer>
 {% endblock %}

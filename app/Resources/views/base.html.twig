@@ -91,35 +91,30 @@
                         </p>
                     </div>
                     <div class="col-md-4 sitemap">
-                        <h3>Sitemap</h3>
+                        <h3>{{ 'main_page.sitemap'|trans }}</h3>
                         <div class="row">
                             <div class="col-md-12">
-                                <a href="/home/">Home</a>
+                                <a href="{{ path('homepage') }}">{{ 'main_page.home'|trans }}</a>
                                 <a href="/about/">About</a>
                                 <a href="/services/">Services</a>
                             </div>
                             <div class="col-md-12">
-                                <a href="/partners/">Partners</a>
+                                <a href="{{ path('nelmio_api_doc_index') }}">API</a>
                                 <a href="/customers/">Support</a>
                                 <a href="/contact/">Contact</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 social">
+                    <div class="col-md-4 social center-block">
                         <h3>Social networks</h3>
                         <a href="http://twitter.com/" class="social-icon twitter"></a>
                         <a href="http://facebook.com/" class="social-icon facebook"></a>
                         <a href="http://plus.google.com/" class="social-icon google-plus"></a>
-                        <a href="http://vimeo.com/" class="social-icon-small vimeo"></a>
-                        <a href="http://youtube.com/" class="social-icon-small youtube"></a>
-                        <a href="http://flickr.com/" class="social-icon-small flickr"></a>
-                        <a href="http://instagram.com/" class="social-icon-small instagram"></a>
-                        <a href="/rss/" class="social-icon-small rss"></a>
                     </div>
                     <div class="col-md-8 footer-logo">
                         <a href="/"><img src="{{ asset('images/footer-logo.png') }}" alt="Logo"></a>
                         <p>
-                            Copyright &copy; 2012 Whitesquare. A
+                            Copyright &copy; 2014 Whitesquare. A
                             <a href="http://pcklab.com">pcklab</a> creation
                         </p>
                     </div>

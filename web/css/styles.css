@@ -6896,4 +6896,32 @@ body {
 
 .white-bg { background-color: white; }
 .no-padding-top { margin-top: 0; }
-.black { color: #333 }
+.black { color: #333; }
+
+.view-block {
+    width: 700px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.text-muted {
+    color: #999;
+    padding-bottom: 19px;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    font-size: 24px;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+#edit-my-company {
+    position: absolute;
+    left:20px;
+    top:20px;
+}
+
+.wide-rows tr {
+    height: 40px;
+}
+
+.va { vertical-align: middle !important; }

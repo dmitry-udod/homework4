@@ -6,6 +6,7 @@ use FOS\UserBundle\Doctrine\UserManager;
 use Skrepka\CompanyBundle\Document\Company;
 use Skrepka\CompanyBundle\Document\CompanyRepository;
 use Skrepka\CompanyBundle\Document\File\MediaRepository;
+use Skrepka\CompanyBundle\Document\Statistic\CompanyViewRepository;
 use Skrepka\UserBundle\Document\User;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\SecurityContext;
@@ -28,12 +29,15 @@ class CompanyManager
     /** @var Session */
     protected $session;
 
+    protected $viewRepo;
+
     public function __construct(
         CompanyRepository $companyRepo,
         SecurityContext $context,
         $userManager,
         MediaRepository $mediaRepo,
-        Session $session
+        Session $session,
+        CompanyViewRepository $viewRepo
     )
     {
         $this->companyRepo = $companyRepo;
@@ -41,6 +45,7 @@ class CompanyManager
         $this->userManager = $userManager;
         $this->mediaRepo = $mediaRepo;
         $this->session = $session;
+        $this->viewRepo = $viewRepo;
     }
 
     /**
@@ -146,10 +151,14 @@ class CompanyManager
         return $companies->contains($company);
     }
 
-    public function increaseViews()
+    public function incrementViews(Company $company, $ip)
     {
-        var_dump($this->session->getId());
-//        $this->session->
+        $isAlreadyViews = $this->viewRepo->isAlreadyViews($company, $this->session->getId());
+
+        if (!$isAlreadyViews) {
+            $this->companyRepo->incrementViews($company, $this->session->getId(), $ip);
+            $company->incrementViews();
+        }
     }
 
     /**

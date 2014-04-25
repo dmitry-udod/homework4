@@ -4,6 +4,7 @@ namespace Skrepka\CompanyBundle\Document;
 
 use Doctrine\ODM\MongoDB\DocumentRepository;
 use Skrepka\CompanyBundle\Document\Company;
+use Skrepka\CompanyBundle\Document\Statistic\CompanyView;
 
 class CompanyRepository extends DocumentRepository
 {
@@ -40,6 +41,16 @@ class CompanyRepository extends DocumentRepository
     public function findBySlug($slug)
     {
         return $this->findOneBy(['slug' => $slug]);
+    }
+
+    public function incrementViews(Company $company, $sessionId, $ip)
+    {
+        $view = new CompanyView();
+        $view->setCompanyId($company->getId())
+            ->setSessionId($sessionId)
+            ->setIp($ip);
+        ;
+        $this->getDocumentManager()->persist($view);
     }
 
     /**

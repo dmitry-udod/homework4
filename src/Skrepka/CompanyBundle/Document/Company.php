@@ -122,6 +122,14 @@ class Company
     protected $metaData;
 
     /**
+     * How many times users view company page
+     *
+     * @var int $views
+     * @ODM\Increment
+     */
+    protected $views = 0;
+
+    /**
      * @var User
      *
      * @Gedmo\Blameable(on="create")
@@ -432,8 +440,31 @@ class Company
         return $this->getCreatedAt()->format('d.m.Y');
     }
 
+    /**
+     * Get company full address (city and street)
+     *
+     * @return string
+     */
     public function getFullAddress()
     {
         return $this->getCity() . ', ' . $this->getAddress();
+    }
+
+    /**
+     * Increment views
+     */
+    public function incrementViews()
+    {
+        $this->views++;
+    }
+
+    /**
+     * Get views count
+     *
+     * @return int
+     */
+    public function getViews()
+    {
+        return $this->views;
     }
 }

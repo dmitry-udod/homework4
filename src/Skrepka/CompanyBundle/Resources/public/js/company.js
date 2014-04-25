@@ -29,3 +29,22 @@ function setPointer() {
         }
     });
 }
+
+function initMap(lat, long)
+{
+    map = new GMaps({
+        div: '#map',
+        lat: 49.4444330,
+        lng: 32.0597671
+    });
+
+    if (lat && long) {
+        map.setCenter(lat, long);
+        map.addMarker({
+            lat: lat,
+            lng: long
+        });
+        $('#company_lat').val(lat);
+        $('#company_long').val(long);
+    }
+}

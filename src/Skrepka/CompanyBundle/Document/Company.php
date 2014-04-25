@@ -221,7 +221,7 @@ class Company
      */
     public function getLat()
     {
-        return $this->createdBy;
+        return $this->lat;
     }
 
     /**

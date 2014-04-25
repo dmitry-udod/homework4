@@ -63,6 +63,12 @@ class CompanyType extends AbstractType
                     'required' => false,
                     'empty_data' => true,
             ])
+            ->add('lat', 'hidden', array(
+                'data' => null,
+            ))
+            ->add('long', 'hidden', array(
+                'data' => null,
+            ))
         ;
     }
 

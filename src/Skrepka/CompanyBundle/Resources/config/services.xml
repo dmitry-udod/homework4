@@ -12,6 +12,13 @@
             <argument>CompanyBundle:Company</argument>
         </service>
 
+        <service id="company_view_repository"
+                 class="Skrepka\CompanyBundle\Document\Statistic\CompanyViewRepository"
+                 factory-service="doctrine.odm.mongodb.document_manager"
+                 factory-method="getRepository">
+            <argument>Skrepka\CompanyBundle\Document\Statistic\CompanyView</argument>
+        </service>
+
         <service id="media_repository"
                  class="Skrepka\CompanyBundle\Document\File\MediaRepository"
                  factory-service="doctrine.odm.mongodb.document_manager"
@@ -28,6 +35,7 @@
             <argument type="service" id="fos_user.user_manager"/>
             <argument type="service" id="media_repository"/>
             <argument type="service" id="session"/>
+            <argument type="service" id="company_view_repository"/>
         </service>
 
         <service id="company.twig.company_extension" class="Skrepka\CompanyBundle\Twig\CompanyExtension">

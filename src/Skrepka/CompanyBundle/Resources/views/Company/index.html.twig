@@ -19,11 +19,11 @@
                     {% if company.logo %}
                         <img class="img-responsive" src="{{ company.logo.webpath | imagine_filter('company_list') }}" />
                     {% else %}
-                        add image
+                        <img src="http://placehold.it/89x89" alt="Logo" />
                     {% endif %}
                     <p class="text-center view-counts hidden-md">
-                        <a href="#" class="tip" data-toggle="tooltip" title="" data-original-title="Viewed">6.1K <i class="glyphicon glyphicon-eye-open"></i></a>
-                        <a href="#" class="tip" data-toggle="tooltip" title="" data-original-title="Favorited">8 <i class="glyphicon glyphicon-thumbs-up"></i></a>
+                        <a href="#" class="tip" data-toggle="tooltip" title="" data-original-title="{{ 'main_page.view_count'|trans }}">{{ company.views }} <i class="glyphicon glyphicon-eye-open"></i></a>
+                        <a href="#" class="tip" data-toggle="tooltip" title="" data-original-title="{{ 'main_page.likes_count'|trans }}">8 <i class="glyphicon glyphicon-thumbs-up"></i></a>
                     </p>
                 </div>
                 <div class="col-xs-21">

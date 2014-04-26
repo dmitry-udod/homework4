@@ -36,6 +36,10 @@ main_page.view_button: Подробней
 main_page.company.created: Дата добавления:
 main_page.sitemap: Карта сайта
 main_page.home: Главная
+main_page.view_count: Колличество просмотров
+main_page.likes_count: Колличество лайков
+main_page.socials: Мы в соц. сетях
+main_page.footer.about_us: О нас
 catalog.address: Адрес
 catalog.mobile: Мобильный телефон
 catalog.email: Электронная почта
@@ -47,4 +51,5 @@ catalog.pager.count: Колличество компаний
 view_company.edit_my_company: Редактировать мою компанию
 view_company.on_map: На карте
 
-
+view_my_company_page: Просмотреть
+company_lik_help: Короткая ссылка на Вашу компанию. Вы можете делится этой ссылкой с кем угодно :)

@@ -10,7 +10,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Skrepka\CompanyBundle\Document\Company;
 use Skrepka\CompanyBundle\Form\CompanyType;
-use JMS\SecurityExtraBundle\Annotation\SecureParam;
 
 class CompanyController extends Controller
 {
@@ -95,10 +94,9 @@ class CompanyController extends Controller
         if (!$company) {
             throw $this->createNotFoundException('now_company_with_this_slug');
         }
-//        var_dump(get_class($this->get('session')));
-//
-//        var_dump($this->getRequest()->getClientIp());
-//        $this->get('company_manager')->increaseViews($this->getRequest()->getClientIp());
+
+        $this->get('company_manager')->incrementViews($company, $this->getRequest()->getClientIp());
+        $this->getDocumentManager()->flush();
 
         return compact('company');
     }

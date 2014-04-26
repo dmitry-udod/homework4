@@ -102,8 +102,9 @@ class Company
 
     /**
      * @ODM\Boolean
+     * @ODM\Index
      */
-    protected $isActive = true;
+    protected $isActive;
 
     /**
      * @ODM\String
@@ -120,6 +121,14 @@ class Company
      * @ODM\ReferenceOne(targetDocument="Skrepka\CompanyBundle\Document\MetaData", cascade={"persist"})
      */
     protected $metaData;
+
+    /**
+     * How many times users view company page
+     *
+     * @var int $views
+     * @ODM\Increment
+     */
+    protected $views = 0;
 
     /**
      * @var User
@@ -432,8 +441,31 @@ class Company
         return $this->getCreatedAt()->format('d.m.Y');
     }
 
+    /**
+     * Get company full address (city and street)
+     *
+     * @return string
+     */
     public function getFullAddress()
     {
         return $this->getCity() . ', ' . $this->getAddress();
+    }
+
+    /**
+     * Increment views
+     */
+    public function incrementViews()
+    {
+        $this->views++;
+    }
+
+    /**
+     * Get views count
+     *
+     * @return int
+     */
+    public function getViews()
+    {
+        return $this->views;
     }
 }

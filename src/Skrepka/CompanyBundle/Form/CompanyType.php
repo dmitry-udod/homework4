@@ -61,7 +61,6 @@ class CompanyType extends AbstractType
             ->add('isActive', 'checkbox', [
                     'label' => 'form.is_published',
                     'required' => false,
-                    'empty_data' => true,
             ])
             ->add('lat', 'hidden', array(
                 'data' => null,

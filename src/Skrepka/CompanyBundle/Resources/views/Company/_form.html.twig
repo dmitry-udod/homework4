@@ -3,6 +3,12 @@
 <ul class="nav nav-tabs">
     <li class="active"><a href="#main" data-toggle="tab">{{ 'company_main_tab'|trans }}</a></li>
     <li><a href="#meta" data-toggle="tab">Meta-данные</a></li>
+    {% if not is_create_page %}
+        <div class="pull-right tip" data-toggle="tooltip" data-placement="bottom" title="{{ 'company_lik_help'|trans }}">
+            <input disabled="disabled" style="width:250px" class="form-control white-bg pull-left" type="text" value="{{ url('company_show', { 'slug': document.slug }) }}" />
+            <a target="_blank" href="{{ path('company_show', { 'slug': document.slug }) }}" class="btn btn-success pull-right"><i class="glyphicon glyphicon-eye-open"></i> {{ 'view_my_company_page'|trans }}</a>
+        </div>
+    {% endif %}
 </ul>
 
 <!-- Tab panes -->
@@ -70,29 +76,3 @@
             </button>
         </div>
 </form>
-
-    {% block javascripts %}
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script src="{{ asset('js/gmaps.js') }}"></script>
-        <script>
-            initMap('{{ document.lat }}', '{{ document.long }}');
-            function initMap(lat, long)
-            {
-                map = new GMaps({
-                    div: '#map',
-                    lat: 49.4444330,
-                    lng: 32.0597671
-                });
-
-                if (lat && long) {
-                    map.setCenter(lat, long);
-                    map.addMarker({
-                        lat: lat,
-                        lng: long
-                    });
-                    $('#company_lat').val(lat);
-                    $('#company_long').val(long);
-                }
-            }
-        </script>
-    {% endblock %}

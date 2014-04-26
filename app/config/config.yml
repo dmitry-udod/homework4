@@ -1,8 +1,6 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: @ActorBundle/Resources/config/admin.xml }
-    - { resource: @FilmBundle/Resources/config/admin.xml }
     - { resource: @CategoryBundle/Resources/config/admin.xml }
     - { resource: @CompanyBundle/Resources/config/admin.xml }
 

@@ -71,7 +71,9 @@
                             </a>
                         </li>
                     {% endif %}
-                    <li><a href="/services/">{{ 'categories'|trans }}</a></li>
+                    <li class="{% if app.request.get('_route') == 'categories' %}active{% endif %}">
+                        <a href="{{ path('categories') }}">{{ 'categories'|trans }}</a>
+                    </li>
                 </ul>
             </nav>
             {% endblock %}
@@ -84,10 +86,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 twitter">
-                        <h3>Twitter feed</h3>
-                        <time datetime="2012-10-23"><a href="#">23 oct</a></time>
+                        <h3>Twitter</h3>
+                        <time datetime="2014-04-27"><a href="#">27 апр</a></time>
                         <p>
-                            In ultricies pellentesque massa a porta. Aliquam ipsum enim, hendrerit ut porta nec, ullamcorper et nulla. In eget mi dui, sit amet scelerisque nunc. Aenean aug
+                            Мы открылись! Правда в жесткой альфе :)
                         </p>
                     </div>
                     <div class="col-md-4 sitemap">
@@ -95,18 +97,16 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <a href="{{ path('homepage') }}">{{ 'main_page.home'|trans }}</a>
-                                <a href="/about/">About</a>
-                                <a href="/services/">Services</a>
+                                <a href="{{ path('categories') }}">{{ 'categories'|trans }}</a>
                             </div>
                             <div class="col-md-12">
                                 <a href="{{ path('nelmio_api_doc_index') }}">API</a>
-                                <a href="/customers/">Support</a>
-                                <a href="/contact/">Contact</a>
+                                <a href="/about/">{{ 'main_page.footer.about_us'|trans }}</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 social center-block">
-                        <h3>Social networks</h3>
+                        <h3>{{ 'main_page.socials'|trans }}</h3>
                         <a href="http://twitter.com/" class="social-icon twitter"></a>
                         <a href="http://facebook.com/" class="social-icon facebook"></a>
                         <a href="http://plus.google.com/" class="social-icon google-plus"></a>
@@ -114,8 +114,7 @@
                     <div class="col-md-8 footer-logo">
                         <a href="/"><img src="{{ asset('images/footer-logo.png') }}" alt="Logo"></a>
                         <p>
-                            Copyright &copy; 2014 Whitesquare. A
-                            <a href="http://pcklab.com">pcklab</a> creation
+                            Copyright &copy; 2014 firma.ck.ua
                         </p>
                     </div>
                 </div>
@@ -142,7 +141,6 @@
                     link_color: '#007dbf',
                     default_mode: 'support',
                     forum_id: 249594,
-//                    tab_label: 'Feedback & Support',
                     tab_label: '{{ 'user_voice.tab.label'|trans }}',
                     tab_color: '#007DBF',
                     tab_position: 'middle-right',

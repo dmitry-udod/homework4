@@ -1,0 +1,26 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <div class="heading">
+        <h1>{{ 'categories'|trans }}</h1>
+    </div>
+
+<div class="container">
+    <div class="row">
+        <ul>
+        {% for category in categories %}
+            {% if category.parent == null %}
+                <li>{{ category.name }}</li>
+
+                {% for cat in subCategories %}
+                    {% if cat.parent != null and cat.parent.id == category.id %}
+                        <li>----{{ cat.name }}</li>
+                    {% endif %}
+                {% endfor %}
+
+            {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

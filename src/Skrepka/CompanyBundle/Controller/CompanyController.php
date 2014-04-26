@@ -10,7 +10,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Skrepka\CompanyBundle\Document\Company;
 use Skrepka\CompanyBundle\Form\CompanyType;
-use JMS\SecurityExtraBundle\Annotation\SecureParam;
 
 class CompanyController extends Controller
 {

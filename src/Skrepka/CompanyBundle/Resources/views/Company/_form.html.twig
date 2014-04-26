@@ -3,6 +3,12 @@
 <ul class="nav nav-tabs">
     <li class="active"><a href="#main" data-toggle="tab">{{ 'company_main_tab'|trans }}</a></li>
     <li><a href="#meta" data-toggle="tab">Meta-данные</a></li>
+    {% if not is_create_page %}
+        <div class="pull-right tip" data-toggle="tooltip" data-placement="bottom" title="{{ 'company_lik_help'|trans }}">
+            <input disabled="disabled" style="width:250px" class="form-control white-bg pull-left" type="text" value="{{ url('company_show', { 'slug': document.slug }) }}" />
+            <a target="_blank" href="{{ path('company_show', { 'slug': document.slug }) }}" class="btn btn-success pull-right"><i class="glyphicon glyphicon-eye-open"></i> {{ 'view_my_company_page'|trans }}</a>
+        </div>
+    {% endif %}
 </ul>
 
 <!-- Tab panes -->

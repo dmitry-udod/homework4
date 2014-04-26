@@ -102,8 +102,9 @@ class Company
 
     /**
      * @ODM\Boolean
+     * @ODM\Index
      */
-    protected $isActive = true;
+    protected $isActive;
 
     /**
      * @ODM\String

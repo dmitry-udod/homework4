@@ -38,8 +38,6 @@ class AppKernel extends Kernel
             new Skrepka\CompanyBundle\CompanyBundle(),
             new Skrepka\UserBundle\UserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new Skrepka\ActorBundle\ActorBundle(),
-            new Skrepka\FilmBundle\FilmBundle(),
             new Skrepka\CategoryBundle\CategoryBundle(),
         );
 

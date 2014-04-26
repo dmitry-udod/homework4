@@ -103,4 +103,19 @@ class Category
     {
         return $this->parent;
     }
+
+    public function setChildren($children)
+    {
+        $this->children = $children;
+    }
+
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
+    }
 }

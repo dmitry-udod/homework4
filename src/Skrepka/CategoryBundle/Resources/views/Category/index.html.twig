@@ -16,7 +16,13 @@ width: 100%;"><h4><b>{{ category.name }}</b></h4></li>
 
                 {% for cat in subCategories %}
                     {% if cat.parent != null and cat.parent.id == category.id %}
-                        <li class="inline">&nbsp;&nbsp;&nbsp;&nbsp;{{ cat.name }}</li>
+                        <li class="inline">
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="{{ path('companies_for_category', {'slug': cat.slug}) }}">
+                                {{ cat.name }}
+                            </a>
+                            ({{ category_company_count(cat) }})
+                        </li>
                     {% endif %}
                 {% endfor %}
 

@@ -3,18 +3,31 @@
 namespace Skrepka\CompanyBundle\Twig;
 
 use Skrepka\CompanyBundle\Document\Company;
+use Skrepka\CompanyBundle\Document\CompanyRepository;
 use Skrepka\UserBundle\Document\User;
 
 class CompanyExtension extends \Twig_Extension
 {
+    public function __construct(CompanyRepository $companyRepo)
+    {
+        $this->companyRepo = $companyRepo;
+    }
+
     public function getFunctions()
     {
         return array(
             new \Twig_SimpleFunction('is_user_has_company', [$this, 'isUserHasCompany']),
             new \Twig_SimpleFunction('is_company_owner', [$this, 'isUserCompanyOwner']),
+            new \Twig_SimpleFunction('category_company_count', [$this, 'categoryCompanyCount']),
         );
     }
 
+    /**
+     * Check is user has company
+     *
+     * @param User $user
+     * @return bool
+     */
     public function isUserHasCompany($user)
     {
         $result = false;
@@ -48,6 +61,20 @@ class CompanyExtension extends \Twig_Extension
         return $result;
     }
 
+    /**
+     * @param $category
+     * @return \Doctrine\MongoDB\Query\Builder
+     */
+    public function categoryCompanyCount($category)
+    {
+        return $this->companyRepo->countCompaniesForCategory($category);
+    }
+
+    /**
+     * Get extension name (service)
+     *
+     * @return string
+     */
     public function getName()
     {
         return 'company_extension';

@@ -1,3 +1,7 @@
 categories:
     pattern:  /categories
     defaults: { _controller: CategoryBundle:Category:index }
+
+companies_for_category:
+    pattern:  /categories/{slug}
+    defaults: { _controller: CategoryBundle:Category:category }

@@ -6,6 +6,11 @@ use Doctrine\ODM\MongoDB\DocumentRepository;
 
 class CategoryRepository extends DocumentRepository
 {
+    /**
+     * Get all categories query
+     *
+     * @return \Doctrine\MongoDB\Query\Query
+     */
     public function all()
     {
         $q = $this->getDocumentManager()
@@ -14,5 +19,16 @@ class CategoryRepository extends DocumentRepository
         ;
 
         return $q->getQuery();
+    }
+
+    /**
+     * Find category by slug
+     *
+     * @param $slug
+     * @return \Skrepka\CategoryBundle\Document\Category
+     */
+    public function findBySlug($slug)
+    {
+        return $this->findOneBy(['slug' => $slug]);
     }
 }

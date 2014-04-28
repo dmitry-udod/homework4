@@ -40,6 +40,7 @@
 
         <service id="company.twig.company_extension" class="Skrepka\CompanyBundle\Twig\CompanyExtension">
             <tag name="twig.extension" />
+            <argument type="service" id="company_repository"/>
         </service>
     </services>
 </container>

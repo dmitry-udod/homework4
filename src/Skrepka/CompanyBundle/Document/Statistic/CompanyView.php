@@ -21,7 +21,7 @@ class CompanyView
      * @var string Session id
      *
      * @ODM\String
-     * @ODM\UniqueIndex
+     * @ODM\Index
      */
     protected $sessionId;
 

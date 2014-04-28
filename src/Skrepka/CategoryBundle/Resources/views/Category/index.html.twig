@@ -6,15 +6,17 @@
     </div>
 
 <div class="container">
-    <div class="row">
-        <ul>
+    <div class="row center-block" style="width:760px">
+        <ul id="categories-list">
         {% for category in categories %}
             {% if category.parent == null %}
-                <li>{{ category.name }}</li>
+                <li style="clear: both; margin-top: 10px; margin-top: 10px;
+float: left;
+width: 100%;"><h4><b>{{ category.name }}</b></h4></li>
 
                 {% for cat in subCategories %}
                     {% if cat.parent != null and cat.parent.id == category.id %}
-                        <li>----{{ cat.name }}</li>
+                        <li class="inline">&nbsp;&nbsp;&nbsp;&nbsp;{{ cat.name }}</li>
                     {% endif %}
                 {% endfor %}
 

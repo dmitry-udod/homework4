@@ -3,6 +3,7 @@
 namespace Skrepka\CompanyBundle\Form;
 
 use Doctrine\ODM\MongoDB\DocumentRepository;
+use Skrepka\CompanyBundle\Document\CompanySetting;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -55,6 +56,10 @@ class CompanyType extends AbstractType
                 'attr' => ['placeholder' => 'http://my-site.com'],
             ])
             ->add('metaData', new MetaDataType(), [
+                    'label' => ' ',
+                    'required' => false,
+            ])
+            ->add('settings', new CompanySettingType(), [
                     'label' => ' ',
                     'required' => false,
             ])

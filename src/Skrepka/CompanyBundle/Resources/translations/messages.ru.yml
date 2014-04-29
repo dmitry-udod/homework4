@@ -15,6 +15,8 @@ add_your_company: Добавить свою компанию
 search_placeholder: Поиск
 create_company: Создать компанию
 company_main_tab: Основные данные
+company_meta_tab: Meta-данные
+company_showtime_tab: Внешний вид
 select_category: Выберите категорию
 categories: Категории
 form.company_name: Название
@@ -29,6 +31,7 @@ form.site: Адрес сайт
 form.logo: Ваш логотип
 form.metaKeywords: Ключевые слова
 form.metaDescription: Описание
+form.bg_color: Цвет фона
 form.is_published: Опубликовать
 form.is_published.help: Нужно ли опубликовать компанию в каталоге. Компния будет отображаться в каталоге и поиске.
 

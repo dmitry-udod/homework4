@@ -130,35 +130,35 @@
             <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}
 
-            {#&#123;&#35;User Voice Widget&#35;&#125;#}
-            {#<script>(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/KucUkHfojg9dSRxEqRpyKw.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})()</script>#}
+            {#User Voice Widget#}
+            <script>(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/KucUkHfojg9dSRxEqRpyKw.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})()</script>
 
-            {#<script>#}
-                {#UserVoice = window.UserVoice || [];#}
-                {#UserVoice.push(['showTab', 'classic_widget', {#}
-                    {#mode: 'full',#}
-                    {#primary_color: '#cc6d00',#}
-                    {#link_color: '#007dbf',#}
-                    {#default_mode: 'support',#}
-                    {#forum_id: 249594,#}
-                    {#tab_label: '{{ 'user_voice.tab.label'|trans }}',#}
-                    {#tab_color: '#007DBF',#}
-                    {#tab_position: 'middle-right',#}
-                    {#tab_inverted: false#}
-                {#}]);#}
-            {#</script>#}
+            <script>
+                UserVoice = window.UserVoice || [];
+                UserVoice.push(['showTab', 'classic_widget', {
+                    mode: 'full',
+                    primary_color: '#cc6d00',
+                    link_color: '#007dbf',
+                    default_mode: 'support',
+                    forum_id: 249594,
+                    tab_label: '{{ 'user_voice.tab.label'|trans }}',
+                    tab_color: '#007DBF',
+                    tab_position: 'middle-right',
+                    tab_inverted: false
+                }]);
+            </script>
 
-            {#&#123;&#35;Google analitics&#35;&#125;#}
-            {#<script>#}
-                {#(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){#}
-                    {#(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),#}
-                        {#m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)#}
-                {#})(window,document,'script','//www.google-analytics.com/analytics.js','ga');#}
+            {#Google analitics#}
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-                {#ga('create', 'UA-50455206-1', 'firma.ck.ua');#}
-                {#ga('send', 'pageview');#}
+                ga('create', 'UA-50455206-1', 'firma.ck.ua');
+                ga('send', 'pageview');
 
-            {#</script>#}
+            </script>
         {% endblock %}
     </body>
 </html>

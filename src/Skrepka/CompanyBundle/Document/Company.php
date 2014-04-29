@@ -123,6 +123,14 @@ class Company
     protected $metaData;
 
     /**
+     * Company settings
+     *
+     * @var CompanySetting
+     * @ODM\ReferenceOne(targetDocument="Skrepka\CompanyBundle\Document\CompanySetting", cascade={"persist"})
+     */
+    protected $settings;
+
+    /**
      * How many times users view company page
      *
      * @var int $views
@@ -467,5 +475,25 @@ class Company
     public function getViews()
     {
         return $this->views;
+    }
+
+    /**
+     * Set company settings
+     *
+     * @param CompanySetting $settings
+     */
+    public function setSettings($settings)
+    {
+        $this->settings = $settings;
+    }
+
+    /**
+     * Get company settings
+     *
+     * @return CompanySetting
+     */
+    public function getSettings()
+    {
+        return $this->settings;
     }
 }

@@ -2,7 +2,8 @@
 
 <ul class="nav nav-tabs">
     <li class="active"><a href="#main" data-toggle="tab">{{ 'company_main_tab'|trans }}</a></li>
-    <li><a href="#meta" data-toggle="tab">Meta-данные</a></li>
+    <li><a href="#meta" data-toggle="tab">{{ 'company_meta_tab'|trans }}</a></li>
+    <li><a href="#showtime" data-toggle="tab">{{ 'company_showtime_tab'|trans }}</a></li>
     {% if not is_create_page %}
         <div class="pull-right tip" data-toggle="tooltip" data-placement="bottom" title="{{ 'company_lik_help'|trans }}">
             <input disabled="disabled" style="width:250px" class="form-control white-bg pull-left" type="text" value="{{ url('company_show', { 'slug': document.slug }) }}" />
@@ -59,6 +60,14 @@
         <div class="tab-pane" id="meta">
             <div class="col-lg-24" style="min-height: 175px">
                 {{ form_row(form.metaData) }}
+            </div>
+        </div>
+
+        <div class="tab-pane" id="showtime">
+            <div class="col-lg-24" style="min-height: 175px">
+                <div class="col-lg-4">
+                    {{ form_row(form.settings) }}
+                </div>
             </div>
         </div>
     </div>

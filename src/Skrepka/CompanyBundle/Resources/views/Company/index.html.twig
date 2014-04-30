@@ -2,7 +2,13 @@
 
 {% block body %}
     <div class="heading">
-        <h1>{{ 'companies'|trans }}</h1>
+        <h1>
+            {% if app.request.get('_route') == 'company_search' %}
+                {{ 'search'|trans }}
+            {% else %}
+                {{ 'companies'|trans }}
+            {% endif %}
+        </h1>
     </div>
 
 <div class="container">

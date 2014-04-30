@@ -190,6 +190,30 @@ class CompanyController extends Controller
         return $this->redirect($this->generateUrl('company'));
     }
 
+    /**
+     * @Template("CompanyBundle:Company:index.html.twig")
+     * @param $query
+     * @return array
+     */
+    public function searchAction($query)
+    {
+        $page = $this->get('request')->query->get('page', 1);
+        $query = (empty($query)) ? $this->get('request')->query->get('q', '') : $query;
+
+        $finder = $this->container->get('fos_elastica.finder.search.companies');
+
+        $documents = $finder->find($query);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $documents,
+            $page,
+            10
+        );
+
+        return compact('pagination');
+    }
+
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder(['id' => $id])

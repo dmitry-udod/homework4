@@ -22,6 +22,10 @@ company_create:
     pattern:  /company/create
     defaults: { _controller: CompanyBundle:Company:create }
 
+company_search:
+    pattern:  /search/{query}
+    defaults: { _controller: CompanyBundle:Company:search, query: '' }
+
 api_v1:
     type: rest
     prefix: /api/v1

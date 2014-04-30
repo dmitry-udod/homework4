@@ -34,6 +34,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new \Liip\ImagineBundle\LiipImagineBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            new FOS\ElasticaBundle\FOSElasticaBundle(),
 
             new Skrepka\CompanyBundle\CompanyBundle(),
             new Skrepka\UserBundle\UserBundle(),

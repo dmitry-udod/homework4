@@ -9,7 +9,6 @@
         {% block stylesheets %}
             <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
             <link href="{{ asset('js/lib/select2/select2.css') }}" rel="stylesheet">
-            {#<link href="http://fonts.googleapis.com/css?family=Oswald:400,300" rel="stylesheet">#}
         {% endblock %}
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -22,10 +21,10 @@
             {% block header_and_navbar %}
             <header>
                 <a href="{{ path('homepage') }}"><img src="{{ asset('images/logo.png') }}" alt="Logo"></a>
-                <form name="search" action="#" method="get" class="form-inline form-search pull-right">
+                <form name="search" action="{{ path('company_search') }}" method="get" class="form-inline form-search pull-right">
                     <div class="input-group">
                         <label class="sr-only" for="searchInput">Search</label>
-                        <input class="form-control" id="searchInput" type="text" name="search" placeholder="{{ 'search_placeholder'|trans }}">
+                        <input class="form-control" id="searchInput" type="text" name="q" placeholder="{{ 'search_placeholder'|trans }}" value="{{ app.request.get('q') }}">
                         <div class="input-group-btn">
                             <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
                         </div>

@@ -25,7 +25,7 @@
                     {% if company.logo %}
                         <img class="img-responsive" src="{{ company.logo.webpath | imagine_filter('company_list') }}" />
                     {% else %}
-                        <img src="http://placehold.it/89x89" alt="Logo" />
+                        <img width="89" height="89" src="{{ asset('images/no_photo.gif') }}" alt="Logo" />
                     {% endif %}
                     <p class="text-center view-counts hidden-md">
                         <a href="#" class="tip" data-toggle="tooltip" title="" data-original-title="{{ 'main_page.view_count'|trans }}">{{ company.views }} <i class="glyphicon glyphicon-eye-open"></i></a>

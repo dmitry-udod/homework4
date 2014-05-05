@@ -35,6 +35,7 @@ class AppKernel extends Kernel
             new \Liip\ImagineBundle\LiipImagineBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
             new FOS\ElasticaBundle\FOSElasticaBundle(),
+            new Presta\SitemapBundle\PrestaSitemapBundle(),
 
             new Skrepka\CompanyBundle\CompanyBundle(),
             new Skrepka\UserBundle\UserBundle(),

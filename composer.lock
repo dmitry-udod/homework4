@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f0f37f2c43f377105fefeb2665cfe0b8",
+    "hash": "0807aac46b49e4053ddde322315ce491",
     "packages": [
         {
             "name": "a2lix/translation-form-bundle",
@@ -3459,6 +3459,69 @@
             "time": "2014-01-09 22:37:17"
         },
         {
+            "name": "presta/sitemap-bundle",
+            "version": "dev-master",
+            "target-dir": "Presta/SitemapBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/prestaconcept/PrestaSitemapBundle.git",
+                "reference": "28e32573e8578a86d03bbc37946d462812a8a908"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/prestaconcept/PrestaSitemapBundle/zipball/28e32573e8578a86d03bbc37946d462812a8a908",
+                "reference": "28e32573e8578a86d03bbc37946d462812a8a908",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "symfony/symfony": ">=2.1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*@stable"
+            },
+            "suggest": {
+                "liip/doctrine-cache-bundle": "Allows to store sitemaps in cache"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Presta\\SitemapBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Epely",
+                    "homepage": "http://www.prestaconcept.net/",
+                    "role": "Initial developer"
+                },
+                {
+                    "name": "Alain Flaus",
+                    "email": "aflaus@prestaconcept.net",
+                    "homepage": "http://www.prestaconcept.net/",
+                    "role": "Maintainer, Developer"
+                }
+            ],
+            "description": "A symfony 2 bundle that provides tools to build your application sitemap.",
+            "keywords": [
+                "Sitemap",
+                "Symfony2",
+                "bundle",
+                "prestaconcept",
+                "xml"
+            ],
+            "time": "2014-02-26 11:19:31"
+        },
+        {
             "name": "psr/log",
             "version": "1.0.0",
             "source": {
@@ -5142,7 +5205,8 @@
         "liip/imagine-bundle": 20,
         "knplabs/gaufrette": 20,
         "vich/uploader-bundle": 20,
-        "nelmio/api-doc-bundle": 0
+        "nelmio/api-doc-bundle": 0,
+        "presta/sitemap-bundle": 20
     },
     "platform": {
         "php": ">=5.3.3"

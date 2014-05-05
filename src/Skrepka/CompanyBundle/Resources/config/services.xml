@@ -42,5 +42,12 @@
             <tag name="twig.extension" />
             <argument type="service" id="company_repository"/>
         </service>
+
+        <service id="sitemap.listener" class="Skrepka\CompanyBundle\EventListener\SitemapListener">
+            <tag name="presta.sitemap.listener" />
+            <argument type="service" id="router"/>
+            <argument type="service" id="category_repository"/>
+            <argument type="service" id="company_repository"/>
+        </service>
     </services>
 </container>

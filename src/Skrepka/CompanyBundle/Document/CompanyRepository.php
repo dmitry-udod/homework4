@@ -9,6 +9,9 @@ use Skrepka\CompanyBundle\Document\Statistic\CompanyView;
 
 class CompanyRepository extends DocumentRepository
 {
+    /**
+     * @return  \Doctrine\ODM\MongoDB\Query\Builder
+     */
     public function all()
     {
         $q = $this->getDocumentManager()

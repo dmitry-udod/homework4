@@ -212,3 +212,5 @@ fos_elastica:
                         provider: ~
                         listener: ~
                         finder: ~
+presta_sitemap:
+    dumper_base_url: "http://firma.ck.ua/"

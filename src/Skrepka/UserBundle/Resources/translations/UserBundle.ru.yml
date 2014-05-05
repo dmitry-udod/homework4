@@ -84,6 +84,7 @@ layout:
     login: Вход
     register: Регистрация
     logged_in_as: Вы вошли как %username%
+    register_keywords: Зарегистрировать свою компанию, регистрация фирмы, регистрация компании, прямая ссылка на компанию
 
 # Form field labels
 form:
@@ -101,3 +102,4 @@ form:
     forgote_pass: "Забыли пароль?"
     no_account: "У вас нет аккаунта?"
     register: "РЕГИСТРАЦИЯ"
+

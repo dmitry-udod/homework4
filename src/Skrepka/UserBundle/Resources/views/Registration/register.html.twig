@@ -1,4 +1,11 @@
 {% extends "::base.html.twig" %}
+{% block title %}{{ 'layout.register'|trans }}{% endblock %}
+{% block meta_keywords %}
+    {{ parent() }}
+    {{ 'layout.register_keywords'|trans }}
+{% endblock %}
+
+{% trans_default_domain 'UserBundle' %}
 
 {% block body %}
 {% include "FOSUserBundle:Registration:register_content.html.twig" %}

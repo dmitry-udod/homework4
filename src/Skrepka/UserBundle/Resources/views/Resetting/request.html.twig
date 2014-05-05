@@ -1,0 +1,7 @@
+{% extends "::base.html.twig" %}
+{% block title %}{{ 'form.forgote_pass'|trans }}{% endblock %}
+
+{% trans_default_domain 'UserBundle' %}
+{% block body %}
+{% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+{% endblock %}

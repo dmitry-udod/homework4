@@ -1,15 +1,7 @@
 {% extends "::base.html.twig" %}
 {% block title %}{{ company.name }}{% endblock %}
-{% block meta_desc %}
-    {% if company.metaData %}
-        {{ company.metaData.metaDescription }}
-    {% endif %}
-{% endblock %}
-{% block meta_keywords %}
-    {% if company.metaData %}
-        {{ company.metaData.metaKeywords }}
-    {% endif %}
-{% endblock %}
+{% block meta_desc %}{% if company.metaData %}{{ company.metaData.metaDescription }}{% endif %}{% endblock %}
+{% block meta_keywords %}{% if company.metaData %}{{ company.metaData.metaKeywords }}{% endif %}{% endblock %}
 
 {% block stylesheets %}
     {{  parent() }}
@@ -98,7 +90,7 @@
             </table>
         </div>
         <div class="col-lg-24">
-            <span class="black">Описание:</span> {{ company.description }}
+            <span class="black"><b>Описание:</b> {{ company.description }}</span>
         </div>
     </div>
     <div class="col-lg-24">
